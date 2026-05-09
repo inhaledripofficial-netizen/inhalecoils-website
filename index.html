@@ -4,315 +4,304 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>inhale® — Premium Coils & E-Liquid</title>
+<link rel="icon" type="image/png" href="inhale.png">
+<link rel="apple-touch-icon" href="inhale.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --black:#080808;--coal:#0f0f0f;--ash:#161616;--plate:#202020;--deep:#1a1a1a;
-  --ember:#e8581a;--ember-low:#b84512;
-  --smoke:#787878;--mist:#2a2a2a;--wire:#383838;
-  --white:#f2ede6;--off:#b8b4ae;--dim:#666;
-  --green:#8bc34a;--orange:#f5a623;
+  --bg:#ffffff;
+  --bg2:#f7f6f4;
+  --bg3:#f0ede8;
+  --line:#e0ddd8;
+  --line2:#ccc9c3;
+  --ink:#111111;
+  --ink2:#444444;
+  --ink3:#888888;
+  --ink4:#bbbbbb;
+  --accent:#c4521a;
+  --accent-light:#f5ece6;
+  --accent-dark:#8f3a10;
 }
 html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+
+
+/* LOGO IMG */
+.logo-img{height:32px;width:auto;display:block;filter:none;}
+.ag-logo-img{height:36px;width:auto;display:block;filter:invert(1);}
+.footer-logo-img{height:28px;width:auto;display:block;filter:invert(1);}
 
 /* CURSOR */
-.cur{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;width:9px;height:9px;background:var(--ember);border-radius:50%;transform:translate(-50%,-50%);transition:width .15s,height .15s;}
-.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9998;width:34px;height:34px;border:1px solid rgba(232,88,26,.3);border-radius:50%;transform:translate(-50%,-50%);transition:all .16s ease-out;}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3.5rem;background:linear-gradient(to bottom,rgba(8,8,8,.97),transparent);transition:background .4s;}
-nav.scrolled{background:rgba(8,8,8,.98);border-bottom:1px solid var(--mist);}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:.12em;color:var(--white);text-decoration:none;}
-.logo span{color:var(--ember);}
-.nav-links{display:flex;gap:2.4rem;list-style:none;}
-.nav-links a{text-decoration:none;color:var(--smoke);font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;transition:color .25s;}
-.nav-links a:hover{color:var(--ember);}
-.nav-right{display:flex;align-items:center;gap:.9rem;}
-.lang-wrap{display:flex;border:1px solid var(--mist);overflow:hidden;}
-.lang-btn{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:.38rem .7rem;border:none;background:transparent;color:var(--smoke);cursor:pointer;transition:all .2s;}
-.lang-btn.active{background:var(--ember);color:var(--black);}
-.btn-o{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--ember);color:var(--ember);padding:.45rem 1.1rem;background:transparent;text-decoration:none;transition:all .22s;cursor:pointer;display:inline-block;}
-.btn-o:hover{background:var(--ember);color:var(--black);}
-.btn-f{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;background:var(--ember);color:var(--black);padding:.45rem 1.3rem;border:1px solid var(--ember);text-decoration:none;transition:all .22s;cursor:pointer;display:inline-block;}
-.btn-f:hover{background:var(--ember-low);}
-
-/* ── HERO ── */
-.hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem;padding:0 3.5rem;overflow:hidden;}
-.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 70% at 72% 50%,rgba(232,88,26,.09) 0%,transparent 65%),radial-gradient(ellipse 30% 45% at 10% 80%,rgba(232,88,26,.04) 0%,transparent 60%);}
-.scanlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);}
-.hero-left{position:relative;z-index:1;padding-top:5rem;}
-.eyebrow{font-family:'Space Mono',monospace;font-size:.63rem;color:var(--ember);letter-spacing:.28em;text-transform:uppercase;margin-bottom:1.3rem;display:flex;align-items:center;gap:.8rem;}
-.eyebrow::before{content:'';width:32px;height:1px;background:var(--ember);flex-shrink:0;}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,8rem);line-height:.91;letter-spacing:.01em;margin-bottom:1.7rem;}
-.hero-title .stroke{-webkit-text-stroke:1.5px var(--white);color:transparent;}
-.hero-title .accent{color:var(--ember);}
-.hero-sub{font-size:.93rem;color:var(--smoke);line-height:1.75;max-width:430px;margin-bottom:2.6rem;}
-.hero-btns{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
-.hero-right{position:relative;z-index:1;padding-top:5rem;display:flex;justify-content:center;align-items:center;}
-.coil-visual{width:320px;height:320px;position:relative;}
-.coil-ring{position:absolute;border-radius:50%;border:1px solid;animation:spin linear infinite;}
-.coil-ring:nth-child(1){inset:0;border-color:rgba(232,88,26,.5);animation-duration:18s;}
-.coil-ring:nth-child(2){inset:20px;border-color:rgba(232,88,26,.3);animation-duration:13s;animation-direction:reverse;}
-.coil-ring:nth-child(3){inset:50px;border-color:rgba(232,88,26,.2);animation-duration:21s;}
-.coil-ring:nth-child(4){inset:86px;border-color:rgba(232,88,26,.14);animation-duration:9s;animation-direction:reverse;}
-.coil-ring::before{content:'';position:absolute;width:8px;height:8px;background:var(--ember);border-radius:50%;top:-4px;left:50%;transform:translateX(-50%);}
-.coil-center{position:absolute;inset:130px;background:radial-gradient(circle,rgba(232,88,26,.22),rgba(232,88,26,.03));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.2em;color:var(--ember);}
-@keyframes spin{to{transform:rotate(360deg);}}
-.hero-stats{position:absolute;bottom:2.5rem;left:0;right:0;display:flex;justify-content:center;gap:3.5rem;z-index:1;padding:1.8rem 3.5rem 0;border-top:1px solid var(--mist);}
-.stat{text-align:center;}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.05em;}
-.stat-label{font-family:'Space Mono',monospace;font-size:.57rem;color:var(--smoke);letter-spacing:.17em;text-transform:uppercase;}
-
-/* ── TICKER ── */
-.ticker{background:var(--ember);overflow:hidden;padding:.6rem 0;}
-.ticker-track{display:flex;gap:2.5rem;animation:ticker 32s linear infinite;white-space:nowrap;}
-@keyframes ticker{to{transform:translateX(-50%);}}
-.t-item{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.14em;color:var(--black);display:flex;align-items:center;gap:.8rem;flex-shrink:0;}
-.t-item::before{content:'✦';font-size:.6rem;}
-
-/* ── SECTIONS ── */
-section{padding:5.5rem 3.5rem;}
-.sec-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ember);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem;}
-.sec-label::before{content:'';width:24px;height:1px;background:var(--ember);}
-.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:1;letter-spacing:.03em;margin-bottom:.6rem;}
-.sec-sub{font-size:.86rem;color:var(--smoke);line-height:1.72;max-width:540px;margin-bottom:2.8rem;}
-
-/* ── WHY ── */
-.why{background:var(--coal);}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--mist);}
-.why-card{padding:2.4rem;border-right:1px solid var(--mist);transition:background .3s;}
-.why-card:last-child{border-right:none;}
-.why-card:hover{background:var(--ash);}
-.why-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--mist);line-height:1;margin-bottom:1.1rem;transition:color .3s;}
-.why-card:hover .why-num{color:var(--ember);}
-.why-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.07em;margin-bottom:.65rem;}
-.why-card p{font-size:.83rem;color:var(--smoke);line-height:1.72;}
-
-/* ── PRODUCTS ── */
-.products{background:var(--black);}
-.prod-line-tabs{display:flex;gap:0;margin-bottom:.5rem;width:fit-content;}
-.pline-btn{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;padding:.55rem 1.4rem;background:transparent;border:1px solid var(--mist);border-right:none;color:var(--smoke);cursor:pointer;transition:all .22s;}
-.pline-btn:last-child{border-right:1px solid var(--mist);}
-.pline-btn.active{background:var(--ember);border-color:var(--ember);color:var(--black);}
-.pline-btn:not(.active):hover{background:var(--ash);color:var(--white);}
-.prod-line{display:none;}
-.prod-line.active{display:block;}
-
-/* COILS TABS */
-.series-tabs{display:flex;gap:0;margin-bottom:2.5rem;border-bottom:1px solid var(--mist);}
-.stab{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.1em;padding:.7rem 2rem;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--smoke);cursor:pointer;margin-bottom:-1px;transition:all .22s;}
-.stab.active{color:var(--ember);border-bottom-color:var(--ember);}
-.stab:not(.active):hover{color:var(--white);}
-.series-panel{display:none;}
-.series-panel.active{display:block;}
-
-.series-info{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.8rem;padding-bottom:1.5rem;border-bottom:1px solid var(--mist);}
-.series-name{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:.05em;}
-.series-desc{font-size:.82rem;color:var(--smoke);margin-top:.3rem;max-width:400px;}
-.series-tag{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;border:1px solid var(--mist);color:var(--off);padding:.28rem .75rem;text-transform:uppercase;}
-
-.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--mist);}
-.prod-card{background:var(--ash);padding:1.8rem;position:relative;overflow:hidden;transition:background .25s;}
-.prod-card:hover{background:var(--plate);}
-.prod-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--ember);transform:scaleX(0);transition:transform .3s;transform-origin:left;}
-.prod-card:hover::after{transform:scaleX(1);}
-.prod-tag{font-family:'Space Mono',monospace;font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
-.prod-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em;margin-bottom:.25rem;}
-.prod-ohm{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:var(--ember);margin-bottom:.9rem;}
-.prod-specs-wrap{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem;}
-.prod-spec{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.08em;border:1px solid var(--wire);color:var(--off);padding:.2rem .55rem;}
-.prod-spec-detail{font-size:.76rem;color:var(--smoke);line-height:1.6;margin-bottom:1.2rem;}
-.price-wrap{border-top:1px solid var(--mist);padding-top:.9rem;}
-.price-retail{font-size:.72rem;color:var(--smoke);}
-.price-num{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;}
-
-
-/* ELIQUID */
-.eliq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--mist);margin-top:3rem;}
-.eliq-card{position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;}
-.eliq-card.pistachio{background:linear-gradient(135deg,#2d4a1e 0%,#3d6b25 40%,#4a7a2a 100%);}
-.eliq-card.banana{background:linear-gradient(135deg,#7a3800 0%,#c56200 40%,#e07200 100%);}
-.eliq-bg-pattern{position:absolute;inset:0;opacity:.06;background:repeating-linear-gradient(45deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.1) 1px,transparent 1px,transparent 12px);}
-.eliq-label-top{position:absolute;top:1.5rem;left:1.5rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.75);}
-.eliq-badge{position:absolute;top:1.5rem;right:1.5rem;font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.1em;padding:.3rem .9rem;background:rgba(0,0,0,.4);}
-.eliq-card.pistachio .eliq-badge{color:var(--green);}
-.eliq-card.banana .eliq-badge{color:var(--orange);}
-.eliq-content{position:relative;z-index:1;padding:2rem;}
-.eliq-brand{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.2em;opacity:.7;margin-bottom:.3rem;}
-.eliq-name{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:.04em;line-height:1;margin-bottom:.8rem;}
-.eliq-card.pistachio .eliq-name{color:var(--green);}
-.eliq-card.banana .eliq-name{color:var(--orange);}
-.eliq-flavor-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem;}
-.eliq-ftag{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);padding:.22rem .6rem;}
-.eliq-desc{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65;}
-
-/* ── ORDER ── */
-.order{background:var(--coal);}
-.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
-.order-cards{display:flex;flex-direction:column;gap:1rem;}
-.order-card{background:var(--ash);border:1px solid var(--mist);padding:1.6rem 1.8rem;text-decoration:none;display:flex;align-items:center;gap:1.3rem;transition:all .25s;color:var(--white);}
-.order-card:hover{border-color:var(--ember);background:var(--plate);}
-.oc-icon{width:42px;height:42px;flex-shrink:0;background:var(--plate);border:1px solid var(--mist);display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:all .25s;}
-.order-card:hover .oc-icon{background:var(--ember);border-color:var(--ember);}
-.oc-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.07em;}
-.oc-sub{font-size:.76rem;color:var(--smoke);margin-top:.15rem;}
-.order-info h3{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.05em;margin-bottom:1rem;}
-.order-info p{font-size:.85rem;color:var(--smoke);line-height:1.75;margin-bottom:.9rem;}
-.check-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
-.check-list li{font-size:.8rem;color:var(--off);display:flex;align-items:flex-start;gap:.65rem;line-height:1.6;}
-.check-list li::before{content:'✦';color:var(--ember);font-size:.55rem;margin-top:.3rem;flex-shrink:0;}
-
-/* ── MAP ── */
-.map-sec{background:var(--black);padding:5.5rem 3.5rem;}
-.map-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;margin-top:3rem;}
-.map-info p{font-size:.85rem;color:var(--smoke);line-height:1.75;margin-bottom:1.5rem;}
-.addr-block{border-left:2px solid var(--ember);padding:.8rem 1.2rem;background:var(--ash);font-family:'Space Mono',monospace;font-size:.7rem;line-height:1.8;color:var(--off);margin-bottom:1.5rem;}
-.map-frame{border:1px solid var(--mist);overflow:hidden;width:100%;height:380px;}
-.map-frame iframe{width:100%;height:100%;border:none;filter:grayscale(80%) invert(90%) contrast(90%);}
+.cur{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;width:8px;height:8px;background:var(--accent);border-radius:50%;transform:translate(-50%,-50%);}
+.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9998;width:30px;height:30px;border:1px solid rgba(196,82,26,.25);border-radius:50%;transform:translate(-50%,-50%);transition:all .16s ease-out;}
 
 /* ── AGE GATE ── */
-.age-gate{position:fixed;inset:0;z-index:1000;background:var(--black);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s;opacity:1;visibility:visible;}
+.age-gate{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s;opacity:1;visibility:visible;}
 .age-gate.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-.age-gate-inner{max-width:460px;width:90%;text-align:center;position:relative;z-index:1;}
-.age-gate-bg{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.08) 3px,rgba(0,0,0,.08) 4px);}
-.age-rings{position:relative;width:110px;height:110px;margin:0 auto 2rem;}
-.age-ring{position:absolute;border-radius:50%;border:1px solid;animation:spin linear infinite;}
-.age-ring:nth-child(1){inset:0;border-color:rgba(232,88,26,.5);animation-duration:12s;}
-.age-ring:nth-child(2){inset:15px;border-color:rgba(232,88,26,.3);animation-duration:8s;animation-direction:reverse;}
-.age-ring:nth-child(3){inset:30px;border-color:rgba(232,88,26,.18);animation-duration:16s;}
-.age-ring::before{content:'';position:absolute;width:7px;height:7px;background:var(--ember);border-radius:50%;top:-3.5px;left:50%;transform:translateX(-50%);}
-.age-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--ember);}
-.age-brand{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.15em;margin-bottom:.2rem;}
-.age-brand span{color:var(--ember);}
-.age-micro{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:1.8rem;}
-.age-line{width:40px;height:1px;background:var(--mist);margin:0 auto 1.8rem;}
-.age-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:.03em;margin-bottom:.7rem;}
-.age-sub{font-size:.82rem;color:var(--smoke);line-height:1.7;margin-bottom:1.8rem;}
-.age-btns{display:flex;gap:.8rem;justify-content:center;margin-bottom:1.4rem;}
-.age-yes{font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;background:var(--ember);color:var(--black);padding:.65rem 2.2rem;border:1px solid var(--ember);cursor:pointer;transition:all .22s;}
-.age-yes:hover{background:var(--ember-low);}
-.age-no{font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;background:transparent;color:var(--smoke);padding:.65rem 2.2rem;border:1px solid var(--mist);cursor:pointer;transition:all .22s;}
-.age-no:hover{border-color:var(--smoke);color:var(--white);}
-.age-note{font-family:'Space Mono',monospace;font-size:.52rem;color:var(--dim);line-height:1.7;letter-spacing:.04em;}
-.age-blocked{display:none;text-align:center;padding:1rem;}
-.age-blocked h2{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--smoke);margin-bottom:.7rem;}
-.age-blocked p{font-size:.8rem;color:var(--dim);line-height:1.7;}
+.ag-box{display:grid;grid-template-columns:1fr 1fr;width:90%;max-width:700px;background:var(--bg);overflow:hidden;border:1px solid var(--line);}
+.ag-left{background:var(--ink);padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:420px;}
+.ag-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.12em;color:#f2ede6;}
+.ag-logo span{color:var(--accent);}
+.ag-mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.2rem;}
+.ag-rings{position:relative;width:88px;height:88px;}
+.ag-ring{position:absolute;border-radius:50%;border:1px solid;}
+.ag-ring:nth-child(1){inset:0;border-color:rgba(196,82,26,.5);animation:spin 16s linear infinite;}
+.ag-ring:nth-child(2){inset:16px;border-color:rgba(196,82,26,.3);animation:spin 11s linear infinite reverse;}
+.ag-ring:nth-child(3){inset:32px;border-color:rgba(196,82,26,.18);animation:spin 19s linear infinite;}
+.ag-ring::before{content:'';position:absolute;width:6px;height:6px;background:var(--accent);border-radius:50%;top:-3px;left:50%;transform:translateX(-50%);}
+.ag-ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);}
+.ag-micro{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:#555;}
+.ag-quote{font-size:.82rem;color:#666;line-height:1.7;font-style:italic;border-left:2px solid var(--accent);padding-left:.9rem;}
+.ag-domain{font-family:'Space Mono',monospace;font-size:.55rem;color:#333;letter-spacing:.1em;}
+.ag-right{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.4rem;}
+.ag-eyebrow{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);}
+.ag-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;letter-spacing:.02em;color:var(--ink);}
+.ag-sub{font-size:.84rem;color:var(--ink2);line-height:1.68;}
+.ag-divider{height:1px;background:var(--line);}
+.ag-btns{display:flex;flex-direction:column;gap:.6rem;}
+.ag-yes{background:var(--ink);color:#fff;border:none;padding:.75rem 1.5rem;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.ag-yes:hover{background:var(--accent);}
+.ag-no{background:transparent;color:var(--ink3);border:1px solid var(--line2);padding:.72rem 1.5rem;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.ag-no:hover{border-color:var(--ink3);color:var(--ink);}
+.ag-note{font-size:.72rem;color:var(--ink4);line-height:1.65;}
+.ag-blocked{display:none;padding:2rem;text-align:center;}
+.ag-blocked h2{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--ink2);margin-bottom:.6rem;}
+.ag-blocked p{font-size:.82rem;color:var(--ink3);}
+@keyframes spin{to{transform:rotate(360deg);}}
 
-/* ── INSTAGRAM SECTION ── */
-.ig-sec{background:var(--black);padding:5.5rem 3.5rem;}
-.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-top:2.5rem;}
-.ig-tile{aspect-ratio:1;background:var(--ash);position:relative;overflow:hidden;}
-.ig-tile a{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;text-decoration:none;gap:.4rem;}
-.ig-tile:hover{background:var(--plate);}
-.ig-tile .ig-hover{position:absolute;inset:0;background:rgba(232,88,26,.8);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .22s;}
-.ig-tile:hover .ig-hover{opacity:1;}
-.ig-hover span{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:var(--black);}
-.ig-placeholder-icon{font-size:1.6rem;opacity:.18;}
-.ig-placeholder-txt{font-family:'Space Mono',monospace;font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);}
-.ig-cta{display:flex;align-items:center;justify-content:space-between;margin-top:2px;padding:1.5rem 2rem;background:var(--ash);border-left:none;border-right:none;border:1px solid var(--mist);flex-wrap:wrap;gap:1rem;}
-.ig-handle{display:flex;align-items:center;gap:1rem;}
-.ig-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#e8581a,#e83d8a);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-.ig-name{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.07em;}
-.ig-tagline{font-size:.75rem;color:var(--smoke);margin-top:.1rem;}
-.ig-right{display:flex;align-items:center;gap:2rem;}
-.ig-stats{display:flex;gap:2rem;}
-.ig-stat{text-align:center;}
-.ig-stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;}
-.ig-stat-label{font-family:'Space Mono',monospace;font-size:.48rem;color:var(--smoke);letter-spacing:.1em;text-transform:uppercase;}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3.5rem;background:rgba(255,255,255,.97);border-bottom:1px solid transparent;transition:border-color .3s;}
+nav.scrolled{border-color:var(--line);}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.12em;color:var(--ink);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2.4rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--ink3);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:.8rem;}
+.lang-wrap{display:flex;border:1px solid var(--line2);overflow:hidden;}
+.lang-btn{font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.1em;padding:.35rem .65rem;border:none;background:transparent;color:var(--ink3);cursor:pointer;transition:all .2s;}
+.lang-btn.active{background:var(--ink);color:#fff;}
+.btn-o{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);padding:.42rem 1.1rem;background:transparent;text-decoration:none;transition:all .2s;cursor:pointer;display:inline-block;}
+.btn-o:hover{background:var(--ink);color:#fff;}
+.btn-f{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;background:var(--ink);color:#fff;padding:.42rem 1.2rem;border:1px solid var(--ink);text-decoration:none;transition:all .2s;cursor:pointer;display:inline-block;}
+.btn-f:hover{background:var(--accent);border-color:var(--accent);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 3.5rem;gap:3rem;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+.hero-left{padding-top:5rem;position:relative;z-index:1;}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--accent);letter-spacing:.26em;text-transform:uppercase;margin-bottom:1.3rem;display:flex;align-items:center;gap:.8rem;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--accent);flex-shrink:0;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,8vw,8rem);line-height:.9;letter-spacing:.01em;margin-bottom:1.6rem;color:var(--ink);}
+.hero-title .stroke{-webkit-text-stroke:1.5px var(--ink);color:transparent;}
+.hero-title .accent{color:var(--accent);}
+.hero-sub{font-size:.95rem;color:var(--ink2);line-height:1.78;max-width:420px;margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-right{padding-top:5rem;display:flex;justify-content:center;align-items:center;position:relative;z-index:1;}
+.coil-visual{width:300px;height:300px;position:relative;}
+.coil-ring{position:absolute;border-radius:50%;border:1px solid;animation:spin linear infinite;}
+.coil-ring:nth-child(1){inset:0;border-color:rgba(196,82,26,.35);animation-duration:18s;}
+.coil-ring:nth-child(2){inset:20px;border-color:rgba(196,82,26,.2);animation-duration:13s;animation-direction:reverse;}
+.coil-ring:nth-child(3){inset:50px;border-color:rgba(17,17,17,.12);animation-duration:22s;}
+.coil-ring:nth-child(4){inset:84px;border-color:rgba(17,17,17,.08);animation-duration:9s;animation-direction:reverse;}
+.coil-ring::before{content:'';position:absolute;width:7px;height:7px;background:var(--accent);border-radius:50%;top:-3.5px;left:50%;transform:translateX(-50%);}
+.coil-center{position:absolute;inset:126px;border:1px solid var(--line2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.18em;color:var(--ink3);}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;display:flex;border-top:1px solid var(--line);}
+.stat{flex:1;padding:1.4rem 0;text-align:center;border-right:1px solid var(--line);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.05em;color:var(--ink);}
+.stat-label{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--ink3);letter-spacing:.15em;text-transform:uppercase;margin-top:.1rem;}
+
+/* ── TICKER ── */
+.ticker{background:var(--ink);overflow:hidden;padding:.55rem 0;}
+.ticker-track{display:flex;gap:2.5rem;animation:ticker 32s linear infinite;white-space:nowrap;}
+@keyframes ticker{to{transform:translateX(-50%);}}
+.t-item{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.8rem;flex-shrink:0;}
+.t-item::before{content:'✦';font-size:.5rem;color:var(--accent);}
+
+/* ── SECTIONS ── */
+section{padding:5rem 3.5rem;}
+.sec-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:.7rem;}
+.sec-label::before{content:'';width:22px;height:1px;background:var(--accent);}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,4vw,3.8rem);line-height:1;letter-spacing:.02em;color:var(--ink);margin-bottom:.5rem;}
+.sec-sub{font-size:.86rem;color:var(--ink2);line-height:1.72;max-width:520px;margin-bottom:2.8rem;}
+
+/* ── WHY ── */
+.why{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);}
+.why-card{padding:2.4rem;border-right:1px solid var(--line);transition:background .25s;}
+.why-card:last-child{border-right:none;}
+.why-card:hover{background:var(--bg3);}
+.why-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--ink4);line-height:1;margin-bottom:1.1rem;transition:color .25s;}
+.why-card:hover .why-num{color:var(--accent);}
+.why-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.06em;margin-bottom:.6rem;color:var(--ink);}
+.why-card p{font-size:.83rem;color:var(--ink2);line-height:1.72;}
+
+/* ── PRODUCTS ── */
+.products{background:var(--bg);}
+.series-tabs{display:flex;gap:0;margin-bottom:2.5rem;border-bottom:1px solid var(--line);}
+.stab{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;padding:.65rem 1.8rem;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--ink3);cursor:pointer;margin-bottom:-1px;transition:all .2s;}
+.stab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.stab:not(.active):hover{color:var(--ink);}
+.series-panel{display:none;}
+.series-panel.active{display:block;}
+.series-info{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.8rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line);}
+.series-name{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:.04em;color:var(--ink);}
+.series-desc{font-size:.82rem;color:var(--ink2);margin-top:.3rem;max-width:380px;}
+.series-tag{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;border:1px solid var(--line2);color:var(--ink2);padding:.25rem .7rem;text-transform:uppercase;}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+.prod-card{background:var(--bg);padding:1.8rem;position:relative;overflow:hidden;transition:background .2s;}
+.prod-card:hover{background:var(--bg2);}
+.prod-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.prod-card:hover::after{transform:scaleX(1);}
+.prod-tag{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink4);margin-bottom:.6rem;}
+.prod-name{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.05em;color:var(--ink);margin-bottom:.2rem;}
+.prod-ohm{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);margin-bottom:.9rem;}
+.prod-specs-wrap{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.2rem;}
+.prod-spec{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.08em;border:1px solid var(--line2);color:var(--ink2);padding:.18rem .5rem;}
+.price-wrap{border-top:1px solid var(--line);padding-top:.85rem;}
+.price-num{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--ink);}
+.price-label{font-family:'Space Mono',monospace;font-size:.52rem;color:var(--ink3);letter-spacing:.1em;margin-bottom:.1rem;}
+
+/* ── ELIQUID ── */
+.eliquid{background:var(--bg2);border-top:1px solid var(--line);}
+.eliq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:3rem;}
+.eliq-card{position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;}
+.eliq-card.pistachio{background:#2d4a1e;}
+.eliq-card.banana{background:#7a3800;}
+.eliq-pattern{position:absolute;inset:0;opacity:.05;background:repeating-linear-gradient(45deg,#fff,#fff 1px,transparent 1px,transparent 14px);}
+.eliq-top{position:absolute;top:1.5rem;left:1.5rem;right:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;}
+.eliq-series-tag{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .65rem;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.6);}
+.eliq-num{font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.1em;padding:.25rem .7rem;background:rgba(0,0,0,.3);color:rgba(255,255,255,.5);}
+.eliq-content{position:relative;z-index:1;padding:2rem;}
+.eliq-brand{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem;}
+.eliq-name{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:.03em;line-height:1;margin-bottom:.9rem;}
+.eliq-card.pistachio .eliq-name{color:#a8d56a;}
+.eliq-card.banana .eliq-name{color:#f5a623;}
+.eliq-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;}
+.eliq-tag{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);padding:.18rem .55rem;}
+.eliq-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;}
 
 /* ── REVIEWS ── */
-.reviews-sec{background:var(--coal);padding:5.5rem 3.5rem;}
-.feat-quote{border-left:3px solid var(--ember);padding:1.5rem 2rem;background:var(--ash);margin-bottom:2px;}
-.feat-q-text{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--white);line-height:1.75;font-style:italic;margin-bottom:1rem;}
-.feat-q-text::before{content:'\201C';font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--ember);line-height:0;vertical-align:-.6rem;margin-right:.3rem;}
-.feat-q-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
-.feat-q-author{display:flex;align-items:center;gap:.8rem;}
-.feat-avatar{width:38px;height:38px;border-radius:50%;background:var(--plate);border:1px solid var(--ember);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--ember);flex-shrink:0;}
-.feat-name{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--white);letter-spacing:.1em;}
-.feat-source{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--smoke);margin-top:.2rem;letter-spacing:.08em;}
-.feat-stars{color:var(--ember);letter-spacing:3px;font-size:.85rem;}
-.feat-badge{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--mist);color:var(--off);padding:.22rem .65rem;}
-.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px;margin-bottom:3rem;}
-.mini-card{background:var(--ash);padding:1.5rem;transition:background .25s;position:relative;overflow:hidden;}
-.mini-card:hover{background:var(--plate);}
-.mini-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--ember);transform:scaleX(0);transition:transform .3s;transform-origin:left;}
-.mini-card:hover::after{transform:scaleX(1);}
-.mini-stars{color:var(--ember);font-size:.7rem;letter-spacing:2px;margin-bottom:.7rem;}
-.mini-text{font-size:.82rem;color:var(--off);line-height:1.65;font-style:italic;margin-bottom:1rem;}
+.reviews{background:var(--bg);border-top:1px solid var(--line);}
+.feat-quote{border-left:3px solid var(--accent);padding:1.6rem 2rem;background:var(--bg2);margin-bottom:1px;}
+.feat-text{font-size:1rem;color:var(--ink);line-height:1.75;font-style:italic;margin-bottom:1rem;}
+.feat-text::before{content:'\201C';font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--accent);line-height:0;vertical-align:-.55rem;margin-right:.25rem;}
+.feat-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
+.feat-author{display:flex;align-items:center;gap:.8rem;}
+.feat-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.8rem;color:var(--accent);flex-shrink:0;}
+.feat-name{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--ink);letter-spacing:.08em;}
+.feat-source{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--ink3);margin-top:.15rem;}
+.feat-stars{color:var(--accent);letter-spacing:2px;font-size:.8rem;}
+.feat-badge{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line2);color:var(--ink2);padding:.2rem .6rem;}
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:1px;}
+.mini-card{background:var(--bg);padding:1.6rem;transition:background .2s;}
+.mini-card:hover{background:var(--bg2);}
+.mini-stars{color:var(--accent);font-size:.65rem;letter-spacing:2px;margin-bottom:.65rem;}
+.mini-text{font-size:.82rem;color:var(--ink2);line-height:1.65;font-style:italic;margin-bottom:1rem;}
 .mini-author{display:flex;align-items:center;justify-content:space-between;}
-.mini-name{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--smoke);letter-spacing:.08em;}
-.mini-tag{font-family:'Space Mono',monospace;font-size:.52rem;color:var(--ember);letter-spacing:.08em;border:1px solid var(--mist);padding:.15rem .5rem;}
-.vid-sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem;}
-.vid-sec-title::before{content:'';width:24px;height:1px;background:var(--mist);}
-.vid-card-r:hover 
+.mini-name{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--ink3);}
+.mini-tag{font-family:'Space Mono',monospace;font-size:.5rem;color:var(--accent);border:1px solid var(--line2);padding:.15rem .45rem;}
 
-/* ── YOUTUBE GRID ── */
-.yt-grid{display:flex;gap:12px;flex-wrap:wrap;}
-.yt-card{background:var(--ash);border:1px solid var(--mist);}
-.yt-card iframe{display:block;width:280px;height:158px;border:none;}
-.yt-info{display:flex;align-items:center;justify-content:space-between;padding:.5rem .7rem;border-top:1px solid var(--mist);}
-.yt-platform{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke);}
-.yt-stars{color:var(--ember);font-size:.65rem;letter-spacing:2px;}
+/* ── ORDER ── */
+.order{background:var(--bg2);border-top:1px solid var(--line);}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.order-cards{display:flex;flex-direction:column;gap:1px;background:var(--line);}
+.order-card{background:var(--bg);border:none;padding:1.5rem 1.8rem;text-decoration:none;display:flex;align-items:center;gap:1.2rem;transition:background .2s;color:var(--ink);}
+.order-card:hover{background:var(--bg3);}
+.oc-icon{width:38px;height:38px;flex-shrink:0;background:var(--bg2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s;}
+.order-card:hover .oc-icon{background:var(--ink);border-color:var(--ink);}
+.oc-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.07em;color:var(--ink);}
+.oc-sub{font-size:.75rem;color:var(--ink3);margin-top:.1rem;}
+.order-info h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:var(--ink);margin-bottom:1rem;}
+.order-info p{font-size:.84rem;color:var(--ink2);line-height:1.75;margin-bottom:.9rem;}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.check-list li{font-size:.8rem;color:var(--ink2);display:flex;align-items:flex-start;gap:.6rem;line-height:1.6;}
+.check-list li::before{content:'→';color:var(--accent);font-size:.7rem;margin-top:.22rem;flex-shrink:0;}
+
+/* ── MAP ── */
+.map-sec{background:var(--bg);border-top:1px solid var(--line);padding:5rem 3.5rem;}
+.map-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;margin-top:3rem;}
+.map-info p{font-size:.84rem;color:var(--ink2);line-height:1.75;margin-bottom:1.4rem;}
+.addr-block{border-left:2px solid var(--accent);padding:.8rem 1.2rem;background:var(--bg2);font-family:'Space Mono',monospace;font-size:.68rem;line-height:1.8;color:var(--ink2);margin-bottom:1.4rem;}
+.addr-block span{color:var(--accent);}
+.map-frame{border:1px solid var(--line);overflow:hidden;width:100%;height:360px;}
+.map-frame iframe{width:100%;height:100%;border:none;filter:grayscale(30%);}
+
+/* ── IG ── */
+.ig-sec{background:var(--bg2);border-top:1px solid var(--line);padding:5rem 3.5rem;}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);margin-top:2.5rem;}
+.ig-tile{aspect-ratio:1;background:var(--bg);position:relative;overflow:hidden;}
+.ig-tile a{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;text-decoration:none;gap:.4rem;}
+.ig-tile:hover{background:var(--bg3);}
+.ig-hover{position:absolute;inset:0;background:rgba(196,82,26,.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.ig-tile:hover .ig-hover{opacity:1;}
+.ig-hover span{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.1em;color:#fff;}
+.ig-icon{font-size:1.4rem;opacity:.15;}
+.ig-txt{font-family:'Space Mono',monospace;font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);}
+.ig-cta{display:flex;align-items:center;justify-content:space-between;margin-top:1px;padding:1.4rem 1.8rem;background:var(--bg);border:1px solid var(--line);flex-wrap:wrap;gap:1rem;}
+.ig-handle{display:flex;align-items:center;gap:.9rem;}
+.ig-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ig-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.07em;color:var(--ink);}
+.ig-tagline{font-size:.73rem;color:var(--ink3);margin-top:.1rem;}
 
 /* ── RESELLER POPUP ── */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px);}
 .overlay.open{opacity:1;pointer-events:all;}
-.popup{background:var(--coal);border:1px solid var(--mist);width:100%;max-width:560px;position:relative;max-height:92vh;overflow-y:auto;}
-.popup-head{padding:2rem 2.2rem 1.4rem;border-bottom:1px solid var(--mist);}
-.popup-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);margin-bottom:.5rem;}
-.popup-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.06em;}
-.popup-sub{font-size:.8rem;color:var(--smoke);margin-top:.4rem;line-height:1.6;}
-.popup-close{position:absolute;top:1.2rem;right:1.2rem;background:transparent;border:1px solid var(--mist);color:var(--smoke);width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.popup-close:hover{border-color:var(--ember);color:var(--ember);}
-.popup-body{padding:1.8rem 2.2rem 2.2rem;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
-.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;}
-.form-group label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--off);}
-.form-group input,.form-group select,.form-group textarea{background:var(--ash);border:1px solid var(--mist);color:var(--white);padding:.7rem .9rem;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .22s;width:100%;}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--ember);}
-.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;}
-.form-group textarea{resize:vertical;min-height:80px;}
-.form-group select option{background:var(--coal);}
-.popup-actions{display:flex;gap:.8rem;margin-top:1.5rem;}
-.form-note{font-size:.75rem;color:var(--smoke);margin-top:.8rem;line-height:1.6;}
-.success-msg{display:none;text-align:center;padding:2rem;}
-.success-msg .check{font-size:2.5rem;margin-bottom:.8rem;}
-.success-msg h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:.5rem;color:var(--ember);}
-.success-msg p{font-size:.85rem;color:var(--smoke);}
+.popup{background:var(--bg);border:1px solid var(--line);width:100%;max-width:540px;position:relative;max-height:92vh;overflow-y:auto;}
+.popup-head{padding:1.8rem 2rem 1.3rem;border-bottom:1px solid var(--line);}
+.popup-label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+.popup-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.05em;color:var(--ink);}
+.popup-sub{font-size:.78rem;color:var(--ink2);margin-top:.35rem;line-height:1.6;}
+.popup-close{position:absolute;top:1.1rem;right:1.1rem;background:transparent;border:1px solid var(--line2);color:var(--ink3);width:30px;height:30px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.popup-close:hover{border-color:var(--ink);color:var(--ink);}
+.popup-body{padding:1.6rem 2rem 2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem;}
+.form-group{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.8rem;}
+.form-group label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink2);}
+.form-group input,.form-group select,.form-group textarea{background:var(--bg2);border:1px solid var(--line2);color:var(--ink);padding:.65rem .85rem;font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;transition:border-color .2s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--ink);}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;background-color:var(--bg2);}
+.form-group textarea{resize:vertical;min-height:75px;}
+.form-group select option{background:var(--bg);}
+.popup-actions{display:flex;gap:.7rem;margin-top:1.3rem;}
+.form-note{font-size:.72rem;color:var(--ink3);margin-top:.7rem;line-height:1.6;}
+.success-msg{display:none;text-align:center;padding:3rem 2rem;}
+.success-msg .s-icon{font-size:2rem;margin-bottom:.8rem;}
+.success-msg h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--ink);margin-bottom:.5rem;}
+.success-msg p{font-size:.84rem;color:var(--ink2);}
 
-/* ── FOOTER ── */
-footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.12em;}
-.footer-logo span{color:var(--ember);}
-.footer-note{font-family:'Space Mono',monospace;font-size:.57rem;color:var(--smoke);letter-spacing:.1em;}
+/* FLOAT BTN */
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:400;display:flex;align-items:center;gap:.55rem;background:var(--ink);color:#fff;padding:.65rem 1.2rem;cursor:pointer;border:none;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;transition:background .2s;}
+.float-btn:hover{background:var(--accent);}
+.float-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.5rem 3.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.12em;color:#f2ede6;}
+.footer-logo span{color:var(--accent);}
+.footer-note{font-family:'Space Mono',monospace;font-size:.55rem;color:#555;letter-spacing:.1em;}
 .footer-links{display:flex;gap:1.8rem;}
-.footer-links a{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--smoke);text-decoration:none;letter-spacing:.13em;text-transform:uppercase;transition:color .22s;}
-.footer-links a:hover{color:var(--ember);}
-
-/* FLOAT RESELLER BTN */
-.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:400;display:flex;align-items:center;gap:.6rem;background:var(--ember);color:var(--black);padding:.7rem 1.3rem;cursor:pointer;border:none;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 4px 24px rgba(232,88,26,.3);transition:background .22s;}
-.float-btn:hover{background:var(--ember-low);}
-.float-dot{width:7px;height:7px;background:var(--black);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.footer-links a{font-family:'Space Mono',monospace;font-size:.55rem;color:#555;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
+.footer-links a:hover{color:var(--accent);}
 
 /* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:1rem 1.2rem;} .nav-links{display:none;}
-  .hero{grid-template-columns:1fr;padding:0 1.2rem;text-align:center;} .hero-right{display:none;}
-  .eyebrow{justify-content:center;} .hero-btns{justify-content:center;} .hero-sub{margin:0 auto 2.6rem;}
-  .hero-stats{flex-wrap:wrap;gap:1.8rem;padding:1.5rem 1.2rem 0;}
-  section,.map-sec{padding:3.8rem 1.2rem;}
-  .why-grid{grid-template-columns:1fr;} .why-card{border-right:none;border-bottom:1px solid var(--mist);}
-  .prod-grid{grid-template-columns:1fr 1fr;} .eliq-grid{grid-template-columns:1fr;}
+  .hero{grid-template-columns:1fr;padding:0 1.2rem;text-align:center;padding-top:4rem;} .hero-right{display:none;}
+  .eyebrow{justify-content:center;} .hero-btns{justify-content:center;} .hero-sub{margin:0 auto 2.5rem;}
+  .hero-stats{flex-wrap:wrap;}
+  section,.map-sec,.ig-sec{padding:3.5rem 1.2rem;}
+  .why-grid,.prod-grid,.mini-grid{grid-template-columns:1fr;}
+  .why-card{border-right:none;border-bottom:1px solid var(--line);}
+  .eliq-grid{grid-template-columns:1fr;}
   .order-grid,.map-inner{grid-template-columns:1fr;gap:2rem;}
   footer{flex-direction:column;align-items:flex-start;padding:2rem 1.2rem;}
-  .popup{max-width:94vw;margin:0 1rem;} .form-row{grid-template-columns:1fr;}
-}
-@media(max-width:600px){
-  .prod-grid{grid-template-columns:1fr;}
+  .ig-grid{grid-template-columns:repeat(3,1fr);}
+  .popup{max-width:94vw;} .form-row{grid-template-columns:1fr;}
+  .ag-box{grid-template-columns:1fr;} .ag-left{min-height:auto;padding:2rem 1.8rem;}
 }
 </style>
 </head>
@@ -323,30 +312,41 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
 
 <!-- AGE GATE -->
 <div class="age-gate" id="ageGate">
-  <div class="age-gate-bg"></div>
-  <div class="age-gate-inner" id="ageContent">
-    <div class="age-rings">
-      <div class="age-ring"></div><div class="age-ring"></div><div class="age-ring"></div>
-      <div class="age-num">21+</div>
+  <div class="ag-box" id="ageContent">
+    <div class="ag-left">
+      <div class="ag-logo"><img src="inhale.png" alt="inhale®" class="ag-logo-img"></div>
+      <div class="ag-mid">
+        <div class="ag-rings">
+          <div class="ag-ring"></div><div class="ag-ring"></div><div class="ag-ring"></div>
+          <div class="ag-ring-num">21+</div>
+        </div>
+        <div class="ag-micro" data-t="ageMicro">Premium Coils & E-Liquid</div>
+        <div class="ag-quote" data-t="ageQuote">"Crafted for adults who appreciate precision and flavor."</div>
+      </div>
+      <div class="ag-domain">inhaledrip.com</div>
     </div>
-    <div class="age-brand">inh<span>a</span>le<sup style="font-size:.6rem;vertical-align:super;color:var(--dim);">®</sup></div>
-    <div class="age-micro" data-t="ageMicro">Premium Coils & E-Liquid</div>
-    <div class="age-line"></div>
-    <div class="age-title" data-t="ageTitle">AGE VERIFICATION</div>
-    <div class="age-sub" data-t="ageSub">This website contains products intended for adults only. Please confirm your age to continue.</div>
-    <div class="age-btns">
-      <button class="age-yes" onclick="agePass()" data-t="ageYes">I am 21 or older</button>
-      <button class="age-no" onclick="ageFail()" data-t="ageNo">Under 21</button>
+    <div class="ag-right" id="ageForm">
+      <div>
+        <div class="ag-eyebrow" data-t="ageEyebrow">Age Verification</div>
+        <div style="height:6px;"></div>
+        <div class="ag-title" data-t="ageTitle">Are you 21 or older?</div>
+      </div>
+      <div class="ag-sub" data-t="ageSub">This website contains vaping products intended for adults only. Please confirm your age before entering.</div>
+      <div class="ag-divider"></div>
+      <div class="ag-btns">
+        <button class="ag-yes" onclick="agePass()" data-t="ageYes">Yes, I am 21 or older</button>
+        <button class="ag-no" onclick="ageFail()" data-t="ageNo">No, I am under 21</button>
+      </div>
+      <div class="ag-note" data-t="ageNote">By entering you confirm you are of legal age to purchase vaping products in your country.</div>
     </div>
-    <div class="age-note" data-t="ageNote">By entering, you confirm you are of legal age in your country to purchase vaping products.</div>
-  </div>
-  <div class="age-blocked" id="ageBlocked">
-    <h2 data-t="blockedTitle">Access Restricted</h2>
-    <p data-t="blockedMsg">Sorry, this website is not available for those under the legal age. Please close this page.</p>
+    <div class="ag-blocked" id="ageBlocked">
+      <h2 data-t="blockedTitle">Access Restricted</h2>
+      <p data-t="blockedMsg">Sorry, this website is not available for those under the legal age.</p>
+    </div>
   </div>
 </div>
 
-<!-- FLOAT RESELLER BUTTON -->
+<!-- FLOAT BTN -->
 <button class="float-btn" onclick="openPopup()">
   <span class="float-dot"></span>
   <span data-t="floatBtn">Become a Reseller</span>
@@ -364,30 +364,15 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
       </div>
       <div class="popup-body">
         <div class="form-row">
-          <div class="form-group">
-            <label data-t="fName">Full Name *</label>
-            <input type="text" id="fName" placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label data-t="fStore">Store / Brand Name *</label>
-            <input type="text" id="fStore" placeholder="Your store name">
-          </div>
+          <div class="form-group"><label data-t="fName">Full Name *</label><input type="text" id="fName" placeholder="Your name"></div>
+          <div class="form-group"><label data-t="fStore">Store / Brand Name *</label><input type="text" id="fStore" placeholder="Store name"></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label data-t="fEmail">Email *</label>
-            <input type="email" id="fEmail" placeholder="email@example.com">
-          </div>
-          <div class="form-group">
-            <label data-t="fWA">WhatsApp Number *</label>
-            <input type="tel" id="fWA" placeholder="+62 8xx xxxx xxxx">
-          </div>
+          <div class="form-group"><label data-t="fEmail">Email *</label><input type="email" id="fEmail" placeholder="email@example.com"></div>
+          <div class="form-group"><label data-t="fWA">WhatsApp *</label><input type="tel" id="fWA" placeholder="+62 8xx xxxx xxxx"></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label data-t="fCity">City / Country *</label>
-            <input type="text" id="fCity" placeholder="Jakarta, Indonesia">
-          </div>
+          <div class="form-group"><label data-t="fCity">City / Country *</label><input type="text" id="fCity" placeholder="Jakarta, Indonesia"></div>
           <div class="form-group">
             <label data-t="fType">Partnership Type *</label>
             <select id="fType">
@@ -403,16 +388,13 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
         <div class="form-group">
           <label data-t="fProducts">Interested Products</label>
           <select id="fProducts">
-            <option value="" data-t="fProdPH">Select product line...</option>
+            <option value="">Select product line...</option>
             <option value="coils">Inhale Coils (NACHOS / KING / BABYSERIES)</option>
             <option value="liquid">Inhaledrip E-Liquid (Baked Series)</option>
             <option value="both" data-t="optBoth">Both Coils & E-Liquid</option>
           </select>
         </div>
-        <div class="form-group">
-          <label data-t="fMsg">Message / Notes</label>
-          <textarea id="fMsg" placeholder="Tell us about your store, monthly order volume, or any questions..."></textarea>
-        </div>
+        <div class="form-group"><label data-t="fMsg">Message / Notes</label><textarea id="fMsg" placeholder="Tell us about your store..."></textarea></div>
         <div class="popup-actions">
           <button class="btn-f" onclick="submitForm()" data-t="btnSend">Send Application →</button>
           <button class="btn-o" onclick="closePopup()" data-t="btnCancel">Cancel</button>
@@ -421,21 +403,22 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
       </div>
     </div>
     <div class="success-msg" id="successMsg">
-      <div class="check">✦</div>
+      <div class="s-icon">✦</div>
       <h3 data-t="successTitle">Application Received!</h3>
-      <p data-t="successMsg">Thank you! Our team will contact you within 1×24 hours via WhatsApp or email.</p>
+      <p data-t="successSub">Thank you! Our team will contact you within 1×24 hours.</p>
     </div>
   </div>
 </div>
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo">inh<span>a</span>le<sup style="font-size:.7rem;vertical-align:super;color:var(--smoke);">®</sup></a>
+  <a href="#" class="logo"><img src="inhale.png" alt="inhale®" class="logo-img"></a>
   <ul class="nav-links">
     <li><a href="#products" data-t="navProducts">Products</a></li>
     <li><a href="#eliquid" data-t="navLiquid">E-Liquid</a></li>
+    <li><a href="#reviews" data-t="navReviews">Reviews</a></li>
     <li><a href="#order" data-t="navOrder">Order</a></li>
-    <li><a href="#reviews" data-t="navReviews">Reviews</a></li><li><a href="#instagram" data-t="navInstagram">Instagram</a></li><li><a href="#location" data-t="navLocation">Location</a></li>
+    <li><a href="#location" data-t="navLocation">Location</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-wrap">
@@ -449,7 +432,6 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-glow"></div><div class="scanlines"></div>
   <div class="hero-left">
     <div class="eyebrow" data-t="heroEyebrow">Premium Handcrafted · Baked Series</div>
     <h1 class="hero-title">
@@ -480,7 +462,7 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-track">
-  <span class="t-item">Inhale Coils</span><span class="t-item">Alexa Nation</span><span class="t-item">Nachos Series</span><span class="t-item">King Series</span><span class="t-item">Babyseries</span><span class="t-item">Inhaledrip Baked</span><span class="t-item">From Plants to WOW</span><span class="t-item">TMN80 USA Wire</span><span class="t-item">International</span><span class="t-item">Inhale Coils</span><span class="t-item">Alexa Nation</span><span class="t-item">Nachos Series</span><span class="t-item">King Series</span><span class="t-item">Babyseries</span><span class="t-item">Inhaledrip Baked</span><span class="t-item">From Plants to WOW</span><span class="t-item">TMN80 USA Wire</span><span class="t-item">International</span>
+  <span class="t-item">Inhale Coils</span><span class="t-item">Alexa Nation</span><span class="t-item">Nachos Series</span><span class="t-item">King Series</span><span class="t-item">Babyseries</span><span class="t-item">Inhaledrip Baked</span><span class="t-item">From Plants to WOW</span><span class="t-item">TMN80 USA Wire</span><span class="t-item">International</span><span class="t-item">inhaledrip.com</span><span class="t-item">Inhale Coils</span><span class="t-item">Alexa Nation</span><span class="t-item">Nachos Series</span><span class="t-item">King Series</span><span class="t-item">Babyseries</span><span class="t-item">Inhaledrip Baked</span><span class="t-item">From Plants to WOW</span><span class="t-item">TMN80 USA Wire</span><span class="t-item">International</span><span class="t-item">inhaledrip.com</span>
 </div></div>
 
 <!-- WHY -->
@@ -489,335 +471,115 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
   <h2 class="sec-title" data-t="whyTitle">THE INHALE DIFFERENCE</h2>
   <div class="why-grid">
     <div class="why-card"><div class="why-num">01</div><h3 data-t="w1h">Handcrafted Precision</h3><p data-t="w1p">Every coil is hand-built for consistent resistance and optimal performance on every session — no shortcuts, no compromises.</p></div>
-    <div class="why-card"><div class="why-num">02</div><h3 data-t="w2h">TMN80 USA Wire</h3><p data-t="w2p">We use full TMN80 USA wire material — faster ramp-up, cleaner flavor, longer lifespan. The same wire trusted by top builders globally.</p></div>
-    <div class="why-card"><div class="why-num">03</div><h3 data-t="w3h">From Coils to Drip</h3><p data-t="w3p">Beyond coils, our Inhaledrip Baked Series e-liquid brings artisan flavor profiles — crafted from plants, delivered in every puff.</p></div>
+    <div class="why-card"><div class="why-num">02</div><h3 data-t="w2h">TMN80 USA Wire</h3><p data-t="w2p">Full TMN80 USA wire material — faster ramp-up, cleaner flavor, longer lifespan. Trusted by top builders globally.</p></div>
+    <div class="why-card"><div class="why-num">03</div><h3 data-t="w3h">From Coils to Drip</h3><p data-t="w3p">Beyond coils, Inhaledrip Baked Series brings artisan flavor profiles — crafted from plants, delivered in every puff.</p></div>
   </div>
 </section>
 
-<!-- COIL PRODUCTS -->
+<!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="sec-label" data-t="coilLabel">Inhale Coils — Product 2025</div>
   <h2 class="sec-title" data-t="coilTitle">COIL LINEUP</h2>
   <p class="sec-sub" data-t="coilSub">All coils made with full TMN80 USA wire. Choose your series.</p>
-
   <div class="series-tabs">
     <button class="stab active" onclick="switchSeries('nachos',this)">NACHOS</button>
     <button class="stab" onclick="switchSeries('king',this)">KING</button>
     <button class="stab" onclick="switchSeries('baby',this)">BABYSERIES</button>
   </div>
-
   <!-- NACHOS -->
   <div class="series-panel active" id="s-nachos">
     <div class="series-info">
       <div><div class="series-name">NACHOS</div><div class="series-desc" data-t="nachosDesc">High-performance alien builds for the serious cloud & flavor chaser.</div></div>
-      <span class="series-tag" data-t="nachosTag">Dual &amp; Single Coil · TMN80</span>
+      <span class="series-tag">Dual & Single · TMN80</span>
     </div>
     <div class="prod-grid">
-      <!-- Alien V1 -->
-      <div class="prod-card">
-        <div class="prod-tag">NACHOS Series</div>
-        <div class="prod-name">ALIEN 0,16 V1</div>
-        <div class="prod-ohm">0.16Ω – 0.18Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3×28g Core</span><span class="prod-spec">36g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div>
-        <div class="prod-spec-detail" data-t="alienSpec">3×28g Cores Wrapped with 36g all TMN80</div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 99.000</span></div>
-        </div>
-      </div>
-      <!-- Alien V2 -->
-      <div class="prod-card">
-        <div class="prod-tag">NACHOS Series</div>
-        <div class="prod-name">ALIEN 0,10 V2</div>
-        <div class="prod-ohm">0.10Ω – 0.12Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3×27g Core</span><span class="prod-spec">37g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">4 Wraps</span><span class="prod-spec">Dual</span></div>
-        <div class="prod-spec-detail" data-t="alienSpec">3×27g Cores Wrapped with 37g all TMN80</div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 99.000</span></div>
-        </div>
-      </div>
-      <!-- Alien V3 -->
-      <div class="prod-card">
-        <div class="prod-tag">NACHOS Series</div>
-        <div class="prod-name">ALIEN 0,21 V3</div>
-        <div class="prod-ohm">0.21Ω – 0.23Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3×30g Core</span><span class="prod-spec">38g Wrap</span><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div>
-        <div class="prod-spec-detail">3×30g Cores Wrapped with 38g all TMN80</div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 99.000</span></div>
-        </div>
-      </div>
-      <!-- Alien Light -->
-      <div class="prod-card">
-        <div class="prod-tag">NACHOS Series</div>
-        <div class="prod-name">ALIEN LIGHT 0,28</div>
-        <div class="prod-ohm">0.28Ω – 0.30Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3×28g Core</span><span class="prod-spec">36g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Single</span></div>
-        <div class="prod-spec-detail">3×28g Cores Wrapped with 36g all TMN80</div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 50.000</span></div>
-        </div>
-      </div>
-      <!-- Fused Clapton -->
-      <div class="prod-card">
-        <div class="prod-tag">NACHOS Series</div>
-        <div class="prod-name">FUSED CLAPTON 0,18</div>
-        <div class="prod-ohm">0.18Ω – 0.20Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2×27g Core</span><span class="prod-spec">37g Wrap</span><span class="prod-spec">2.5mm ID</span><span class="prod-spec">6 Wraps</span><span class="prod-spec">Dual</span></div>
-        <div class="prod-spec-detail">2×27g Cores Wrapped with 37g all TMN80</div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 50.000</span></div>
-        </div>
-      </div>
-      <!-- Baby Alien -->
-      <div class="prod-card">
-        <div class="prod-tag">NACHOS Series</div>
-        <div class="prod-name">BABY ALIEN 0,20</div>
-        <div class="prod-ohm">0.20Ω – 0.22Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2×28g Core</span><span class="prod-spec">36g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div>
-        <div class="prod-spec-detail">2×28g Cores Wrapped with 36g all TMN80</div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 65.000</span></div>
-        </div>
-      </div>
+      <div class="prod-card"><div class="prod-tag">NACHOS</div><div class="prod-name">ALIEN 0,16 V1</div><div class="prod-ohm">0.16Ω – 0.18Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3×28g Core</span><span class="prod-spec">36g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 99.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">NACHOS</div><div class="prod-name">ALIEN 0,10 V2</div><div class="prod-ohm">0.10Ω – 0.12Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3×27g Core</span><span class="prod-spec">37g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">4 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 99.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">NACHOS</div><div class="prod-name">ALIEN 0,21 V3</div><div class="prod-ohm">0.21Ω – 0.23Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3×30g Core</span><span class="prod-spec">38g Wrap</span><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 99.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">NACHOS</div><div class="prod-name">ALIEN LIGHT 0,28</div><div class="prod-ohm">0.28Ω – 0.30Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3×28g Core</span><span class="prod-spec">36g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Single</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 50.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">NACHOS</div><div class="prod-name">FUSED CLAPTON 0,18</div><div class="prod-ohm">0.18Ω – 0.20Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2×27g Core</span><span class="prod-spec">37g Wrap</span><span class="prod-spec">2.5mm ID</span><span class="prod-spec">6 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 50.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">NACHOS</div><div class="prod-name">BABY ALIEN 0,20</div><div class="prod-ohm">0.20Ω – 0.22Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2×28g Core</span><span class="prod-spec">36g Wrap</span><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 65.000</div></div></div>
     </div>
   </div>
-
   <!-- KING -->
   <div class="series-panel" id="s-king">
     <div class="series-info">
       <div><div class="series-name">INHALE KING</div><div class="series-desc" data-t="kingDesc">"A Taste of the King" — playing card collection for mid-ohm precision builds.</div></div>
-      <span class="series-tag">2 pcs Coil · TMN80</span>
+      <span class="series-tag">2 pcs · TMN80</span>
     </div>
     <div class="prod-grid">
-      <div class="prod-card">
-        <div class="prod-tag">KING Series</div>
-        <div class="prod-name">CLOVER ♣</div>
-        <div class="prod-ohm">0.37Ω – 0.40Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 100.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">KING Series</div>
-        <div class="prod-name">LOVE ♥</div>
-        <div class="prod-ohm">0.29Ω – 0.31Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 100.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">KING Series</div>
-        <div class="prod-name">SPADE ♠</div>
-        <div class="prod-ohm">0.36Ω – 0.38Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 65.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">KING Series</div>
-        <div class="prod-name">DIAMOND ♦</div>
-        <div class="prod-ohm">0.39Ω – 0.40Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 65.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">KING Series · Special</div>
-        <div class="prod-name">JOKER 🃏</div>
-        <div class="prod-ohm">0.30Ω – 0.33Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 80.000</span></div>
-        </div>
-      </div>
+      <div class="prod-card"><div class="prod-tag">KING</div><div class="prod-name">CLOVER ♣</div><div class="prod-ohm">0.37Ω – 0.40Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 100.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">KING</div><div class="prod-name">LOVE ♥</div><div class="prod-ohm">0.29Ω – 0.31Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 100.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">KING</div><div class="prod-name">SPADE ♠</div><div class="prod-ohm">0.36Ω – 0.38Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 65.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">KING</div><div class="prod-name">DIAMOND ♦</div><div class="prod-ohm">0.39Ω – 0.40Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 65.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">KING · Special</div><div class="prod-name">JOKER 🃏</div><div class="prod-ohm">0.30Ω – 0.33Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">2 pcs</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 80.000</div></div></div>
     </div>
   </div>
-
   <!-- BABYSERIES -->
   <div class="series-panel" id="s-baby">
     <div class="series-info">
-      <div><div class="series-name">BABYSERIES</div><div class="series-desc" data-t="babyDesc">Slim-packaged baby alien coils — single &amp; dual options for 2.5mm and 3.0mm ID builds.</div></div>
-      <span class="series-tag" data-t="babyTag">Single &amp; Dual · TMN80</span>
+      <div><div class="series-name">BABYSERIES</div><div class="series-desc" data-t="babyDesc">Slim baby alien coils — single & dual for 2.5mm and 3.0mm ID builds.</div></div>
+      <span class="series-tag" data-t="babyTag">Single & Dual · TMN80</span>
     </div>
     <div class="prod-grid">
-      <div class="prod-card">
-        <div class="prod-tag">BABYSERIES</div>
-        <div class="prod-name">2.5 SINGLE</div>
-        <div class="prod-ohm">0.28Ω – 0.30Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Single Coil</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 50.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">BABYSERIES</div>
-        <div class="prod-name">2.5 DUAL</div>
-        <div class="prod-ohm">0.14Ω – 0.15Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual Coil</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 80.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">BABYSERIES</div>
-        <div class="prod-name">3.0 SINGLE</div>
-        <div class="prod-ohm">0.32Ω – 0.35Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Single Coil</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 50.000</span></div>
-        </div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-tag">BABYSERIES</div>
-        <div class="prod-name">3.0 DUAL</div>
-        <div class="prod-ohm">0.17Ω – 0.19Ω</div>
-        <div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual Coil</span></div>
-        <div class="price-wrap">
-          <div class="price-retail"><span class="price-num">Rp 80.000</span></div>
-        </div>
-      </div>
+      <div class="prod-card"><div class="prod-tag">BABYSERIES</div><div class="prod-name">2.5 SINGLE</div><div class="prod-ohm">0.28Ω – 0.30Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Single</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 50.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">BABYSERIES</div><div class="prod-name">2.5 DUAL</div><div class="prod-ohm">0.14Ω – 0.15Ω</div><div class="prod-specs-wrap"><span class="prod-spec">2.5mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 80.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">BABYSERIES</div><div class="prod-name">3.0 SINGLE</div><div class="prod-ohm">0.32Ω – 0.35Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Single</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 50.000</div></div></div>
+      <div class="prod-card"><div class="prod-tag">BABYSERIES</div><div class="prod-name">3.0 DUAL</div><div class="prod-ohm">0.17Ω – 0.19Ω</div><div class="prod-specs-wrap"><span class="prod-spec">3.0mm ID</span><span class="prod-spec">5 Wraps</span><span class="prod-spec">Dual</span></div><div class="price-wrap"><div class="price-label" data-t="retail">Retail Price</div><div class="price-num">Rp 80.000</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- E-LIQUID -->
-<section style="background:var(--coal);padding:5.5rem 3.5rem;" id="eliquid">
+<!-- ELIQUID -->
+<section class="eliquid" id="eliquid">
   <div class="sec-label" data-t="eliqLabel">inhaledrip — Baked Series</div>
   <h2 class="sec-title" data-t="eliqTitle">E-LIQUID COLLECTION</h2>
   <p class="sec-sub" data-t="eliqSub">"From Plants to WOW" — artisan e-liquid crafted from natural flavor profiles.</p>
   <div class="eliq-grid">
-    <!-- Pistachio -->
     <div class="eliq-card pistachio">
-      <div class="eliq-bg-pattern"></div>
-      <div class="eliq-label-top">Baked Series · 01</div>
-      <div class="eliq-badge" data-t="eliqBadge1">Creamy · Nutty · Buttery</div>
+      <div class="eliq-pattern"></div>
+      <div class="eliq-top"><span class="eliq-series-tag">Baked Series · 01</span><span class="eliq-num">inhaledrip</span></div>
       <div class="eliq-content">
         <div class="eliq-brand">inhaledrip</div>
         <div class="eliq-name">Bread Butter<br>Pistachio</div>
-        <div class="eliq-flavor-tags">
-          <span class="eliq-ftag" data-t="pistTag1">Creamy Nutty</span>
-          <span class="eliq-ftag" data-t="pistTag2">Smooth Buttery</span>
-          <span class="eliq-ftag">Baked</span>
-        </div>
+        <div class="eliq-tags"><span class="eliq-tag" data-t="pistTag1">Creamy Nutty</span><span class="eliq-tag" data-t="pistTag2">Smooth Buttery</span><span class="eliq-tag">Baked</span></div>
         <div class="eliq-desc" data-t="pistDesc">Rich pistachio cream spread over warm toasted bread — a savory-sweet baked experience in every inhale.</div>
       </div>
     </div>
-    <!-- Banana -->
     <div class="eliq-card banana">
-      <div class="eliq-bg-pattern"></div>
-      <div class="eliq-label-top">Baked Series · 02</div>
-      <div class="eliq-badge" data-t="eliqBadge2">Fruity · Sweet · Cake</div>
+      <div class="eliq-pattern"></div>
+      <div class="eliq-top"><span class="eliq-series-tag">Baked Series · 02</span><span class="eliq-num">inhaledrip</span></div>
       <div class="eliq-content">
         <div class="eliq-brand">inhaledrip</div>
         <div class="eliq-name">Banana<br>Berry Cake</div>
-        <div class="eliq-flavor-tags">
-          <span class="eliq-ftag" data-t="banaTag1">From Plants to WOW</span>
-          <span class="eliq-ftag">Baked</span>
-          <span class="eliq-ftag" data-t="banaTag2">Fruity Sweet</span>
-        </div>
+        <div class="eliq-tags"><span class="eliq-tag" data-t="banaTag1">From Plants to WOW</span><span class="eliq-tag">Baked</span><span class="eliq-tag" data-t="banaTag2">Fruity Sweet</span></div>
         <div class="eliq-desc" data-t="banaDesc">Fresh banana meets mixed berry cake — a tropical-fruity bake that hits smooth on every exhale.</div>
       </div>
     </div>
   </div>
 </section>
 
-
-
 <!-- REVIEWS -->
-<section class="reviews-sec" id="reviews">
+<section class="reviews" id="reviews">
   <div class="sec-label" data-t="revLabel">What They Say</div>
   <h2 class="sec-title" data-t="revTitle">REAL REVIEWS</h2>
-
   <div class="feat-quote">
-    <div class="feat-q-text" data-t="featText">Alien 0,16 V1 ini seriously underrated — ramp up super cepat, flavor clean abis, dan build quality-nya konsisten tiap pack. Udah coba banyak coil lokal, ini yang paling worth it. Daily driver gue sekarang.</div>
-    <div class="feat-q-bottom">
-      <div class="feat-q-author">
+    <div class="feat-text" data-t="featText">Alien 0,16 V1 ini seriously underrated — ramp up super cepat, flavor clean abis, dan build quality-nya konsisten tiap pack. Udah coba banyak coil lokal, ini yang paling worth it. Daily driver gue sekarang.</div>
+    <div class="feat-bottom">
+      <div class="feat-author">
         <div class="feat-avatar">DC</div>
-        <div>
-          <div class="feat-name">@dikicloud_id</div>
-          <div class="feat-source" data-t="featSrc">TikTok Review · NACHOS Alien V1 · Jakarta</div>
-        </div>
+        <div><div class="feat-name">@dikicloud_id</div><div class="feat-source" data-t="featSrc">TikTok Review · NACHOS Alien V1 · Jakarta</div></div>
       </div>
       <div style="display:flex;align-items:center;gap:.8rem;">
-        <div class="feat-stars">★★★★★</div>
+        <span class="feat-stars">★★★★★</span>
         <span class="feat-badge">NACHOS Series</span>
       </div>
     </div>
   </div>
-
   <div class="mini-grid">
-    <div class="mini-card">
-      <div class="mini-stars">★★★★★</div>
-      <div class="mini-text" data-t="r1">"Bread Butter Pistachio beneran kaya banget rasanya. Creamy, nutty, ga ada rasa aneh sama sekali. Ini liquid pertama gue yang abis dalam 3 hari."</div>
-      <div class="mini-author">
-        <div class="mini-name">@arifvapes · Surabaya</div>
-        <div class="mini-tag">Inhaledrip</div>
-      </div>
-    </div>
-    <div class="mini-card">
-      <div class="mini-stars">★★★★★</div>
-      <div class="mini-text" data-t="r2">"King Series packaging-nya aesthetic banget, kayak beli kartu remi premium. Coil-nya presisi, tahan lama, flavor gak turun-turun."</div>
-      <div class="mini-author">
-        <div class="mini-name">@fandyvape · Bandung</div>
-        <div class="mini-tag">KING Series</div>
-      </div>
-    </div>
-    <div class="mini-card">
-      <div class="mini-stars">★★★★★</div>
-      <div class="mini-text" data-t="r3">"Banana Berry Cake adiktif parah. From Plants to WOW itu beneran, bau-nya aja udah bikin ngiler sebelum di-vape."</div>
-      <div class="mini-author">
-        <div class="mini-name">@rizkymod · Medan</div>
-        <div class="mini-tag">Inhaledrip</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="vid-sec-title" data-t="vidTitle">Video Reviews</div>
-  <div class="yt-grid">
-    <div class="yt-card">
-      <iframe src="https://www.youtube.com/embed/9WF6Gi4naaI?rel=0&modestbranding=1&color=white" title="Inhale Review 1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-      <div class="yt-info">
-        <span class="yt-platform">YouTube</span>
-        <span class="yt-stars">★★★★★</span>
-      </div>
-    </div>
-    <div class="yt-card">
-      <iframe src="https://www.youtube.com/embed/VKBdwKBI_aA?rel=0&modestbranding=1&color=white" title="Inhale Review 2" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-      <div class="yt-info">
-        <span class="yt-platform">YouTube</span>
-        <span class="yt-stars">★★★★★</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INSTAGRAM -->
-<section class="ig-sec" id="instagram">
-  <div class="sec-label" data-t="igLabel">@inhalecoils</div>
-  <h2 class="sec-title" data-t="igTitle">FOLLOW FOR UPDATES</h2>
-  <div class="ig-grid">
-    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-placeholder-icon">📸</div><div class="ig-placeholder-txt">Latest Post</div><div class="ig-hover"><span>View IG →</span></div></a></div>
-    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-placeholder-icon">🔥</div><div class="ig-placeholder-txt">New Drop</div><div class="ig-hover"><span>View IG →</span></div></a></div>
-    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-placeholder-icon">⚙️</div><div class="ig-placeholder-txt">Build Shots</div><div class="ig-hover"><span>View IG →</span></div></a></div>
-    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-placeholder-icon">💨</div><div class="ig-placeholder-txt">Cloud Nation</div><div class="ig-hover"><span>View IG →</span></div></a></div>
-    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-placeholder-icon">🎯</div><div class="ig-placeholder-txt">Precision</div><div class="ig-hover"><span>View IG →</span></div></a></div>
-    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-placeholder-icon">✦</div><div class="ig-placeholder-txt">Alexa Nation</div><div class="ig-hover"><span>View IG →</span></div></a></div>
-  </div>
-  <div class="ig-cta">
-    <div class="ig-handle">
-      <div class="ig-avatar">📷</div>
-      <div>
-        <div class="ig-name">@inhalecoils</div>
-        <div class="ig-tagline" data-t="igTagline">Premium Coils & E-Liquid · Alexa Nation · inhalecoils.com</div>
-      </div>
-    </div>
-    <div class="ig-right">
-      <a href="https://www.instagram.com/inhalecoils/" target="_blank" class="btn-f" data-t="igFollow">Follow on Instagram →</a>
-    </div>
+    <div class="mini-card"><div class="mini-stars">★★★★★</div><div class="mini-text" data-t="r1">"Bread Butter Pistachio beneran kaya banget rasanya. Creamy, nutty, ga ada rasa aneh. Ini liquid pertama gue yang abis dalam 3 hari."</div><div class="mini-author"><span class="mini-name">@arifvapes · Surabaya</span><span class="mini-tag">Inhaledrip</span></div></div>
+    <div class="mini-card"><div class="mini-stars">★★★★★</div><div class="mini-text" data-t="r2">"King Series packaging-nya aesthetic, kayak beli kartu remi premium. Coil-nya presisi, tahan lama, flavor gak turun-turun."</div><div class="mini-author"><span class="mini-name">@fandyvape · Bandung</span><span class="mini-tag">KING Series</span></div></div>
+    <div class="mini-card"><div class="mini-stars">★★★★★</div><div class="mini-text" data-t="r3">"Banana Berry Cake adiktif parah. From Plants to WOW itu beneran, bau-nya aja udah bikin ngiler sebelum di-vape."</div><div class="mini-author"><span class="mini-name">@rizkymod · Medan</span><span class="mini-tag">Inhaledrip</span></div></div>
   </div>
 </section>
 
@@ -827,32 +589,20 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
   <h2 class="sec-title" data-t="orderTitle">GET YOUR INHALE</h2>
   <div class="order-grid">
     <div class="order-cards">
-      <a href="https://vt.tiktok.com/ZSH37g3XG/?page=Mall" target="_blank" class="order-card">
-        <div class="oc-icon">🛒</div>
-        <div><div class="oc-title">TikTok Shop</div><div class="oc-sub" data-t="oc1sub">Official Mall — Safe, easy, COD available</div></div>
-      </a>
-      <a href="http://wa.me/6282285878450" target="_blank" class="order-card">
-        <div class="oc-icon">💬</div>
-        <div><div class="oc-title">WhatsApp Order</div><div class="oc-sub">+62 822-8587-8450</div></div>
-      </a>
-      <a href="http://wa.me/6285117178450" target="_blank" class="order-card">
-        <div class="oc-icon">📦</div>
-        <div><div class="oc-title" data-t="oc3title">Claim Product — Alexa</div><div class="oc-sub">+62 851-1717-8450</div></div>
-      </a>
-      <a href="https://drive.google.com/file/d/1A4D3QEx1XPB5Vr2mc8osuU0H-Uxmtp7U/view" target="_blank" class="order-card">
-        <div class="oc-icon">📋</div>
-        <div><div class="oc-title" data-t="oc4title">Coil Catalog 2025</div><div class="oc-sub" data-t="oc4sub">View full product list & pricing</div></div>
-      </a>
+      <a href="https://vt.tiktok.com/ZSH37g3XG/?page=Mall" target="_blank" class="order-card"><div class="oc-icon">🛒</div><div><div class="oc-title">TikTok Shop</div><div class="oc-sub" data-t="oc1sub">Official Mall — Safe, easy, COD available</div></div></a>
+      <a href="http://wa.me/6282285878450" target="_blank" class="order-card"><div class="oc-icon">💬</div><div><div class="oc-title">WhatsApp Order</div><div class="oc-sub">+62 822-8587-8450</div></div></a>
+      <a href="http://wa.me/6285117178450" target="_blank" class="order-card"><div class="oc-icon">📦</div><div><div class="oc-title" data-t="oc3title">Claim Product — Alexa</div><div class="oc-sub">+62 851-1717-8450</div></div></a>
+      <a href="https://drive.google.com/file/d/1A4D3QEx1XPB5Vr2mc8osuU0H-Uxmtp7U/view" target="_blank" class="order-card"><div class="oc-icon">📋</div><div><div class="oc-title" data-t="oc4title">Coil Catalog 2025</div><div class="oc-sub" data-t="oc4sub">View full product list & pricing</div></div></a>
     </div>
     <div class="order-info">
       <h3 data-t="orderInfoTitle">Simple Order Process</h3>
-      <p data-t="orderInfoP">Inhale is available on TikTok Shop for seamless online transactions, with WhatsApp lines ready for personal consultation and custom orders.</p>
+      <p data-t="orderInfoP">Available on TikTok Shop for seamless online transactions, with WhatsApp lines for personal consultation and custom orders.</p>
       <ul class="check-list">
         <li data-t="cl1">Browse the catalog and pick your coil type and specs</li>
-        <li data-t="cl2">Order via TikTok Shop for automated processing or WhatsApp for custom builds</li>
-        <li data-t="cl3">Every product comes with warranty — claim directly to CS Alexa</li>
+        <li data-t="cl2">Order via TikTok Shop or WhatsApp for custom builds</li>
+        <li data-t="cl3">Every product comes with warranty — claim to CS Alexa</li>
         <li data-t="cl4">Nationwide shipping across Indonesia, securely packed</li>
-        <li data-t="cl5">International orders available — contact us for wholesale enquiries</li>
+        <li data-t="cl5">International orders available — contact us for enquiries</li>
       </ul>
     </div>
   </div>
@@ -865,30 +615,40 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
   <div class="map-inner">
     <div class="map-info">
       <p data-t="mapDesc">Visit our store or contact us for wholesale pickup and local orders.</p>
-      <div class="addr-block">
-        inhale® — Coils &amp; Drip<br>
-        Pekanbaru, Riau<br>
-        Indonesia<br>
-        <br>
-        <span style="color:var(--ember);">WA:</span> +62 822-8587-8450<br>
-        <span style="color:var(--ember);">IG:</span> @inhalecoils<br>
-        <span style="color:var(--ember);">Web:</span> www.inhalecoils.com
-      </div>
+      <div class="addr-block">inhale® — Coils &amp; Drip<br>Pekanbaru, Riau<br>Indonesia<br><br><span>WA:</span> +62 822-8587-8450<br><span>IG:</span> @inhalecoils<br><span>Web:</span> inhaledrip.com</div>
       <a href="https://maps.app.goo.gl/zvX3PCPSK3NbpP4Y7" target="_blank" class="btn-o" data-t="mapBtn">Open in Google Maps →</a>
     </div>
     <div class="map-frame">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127595.80668046!2d101.3431!3d0.5071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a9b400000001%3A0x400000!2sPekanbaru%2C+Riau!5e0!3m2!1sen!2sid!4v1"
-        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127595.80668046!2d101.3431!3d0.5071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a9b400000001%3A0x400000!2sPekanbaru%2C+Riau!5e0!3m2!1sen!2sid!4v1" allowfullscreen loading="lazy"></iframe>
     </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig-sec" id="instagram">
+  <div class="sec-label" data-t="igLabel">@inhalecoils</div>
+  <h2 class="sec-title" data-t="igTitle">FOLLOW FOR UPDATES</h2>
+  <div class="ig-grid">
+    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-icon">📸</div><div class="ig-txt">Latest</div><div class="ig-hover"><span>View →</span></div></a></div>
+    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-icon">🔥</div><div class="ig-txt">New Drop</div><div class="ig-hover"><span>View →</span></div></a></div>
+    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-icon">⚙️</div><div class="ig-txt">Builds</div><div class="ig-hover"><span>View →</span></div></a></div>
+    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-icon">💨</div><div class="ig-txt">Clouds</div><div class="ig-hover"><span>View →</span></div></a></div>
+    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-icon">🎯</div><div class="ig-txt">Precision</div><div class="ig-hover"><span>View →</span></div></a></div>
+    <div class="ig-tile"><a href="https://www.instagram.com/inhalecoils/" target="_blank"><div class="ig-icon">✦</div><div class="ig-txt">Nation</div><div class="ig-hover"><span>View →</span></div></a></div>
+  </div>
+  <div class="ig-cta">
+    <div class="ig-handle">
+      <div class="ig-avatar">📷</div>
+      <div><div class="ig-name">@inhalecoils</div><div class="ig-tagline" data-t="igTagline">Premium Coils & E-Liquid · Alexa Nation · inhaledrip.com</div></div>
+    </div>
+    <a href="https://www.instagram.com/inhalecoils/" target="_blank" class="btn-f" data-t="igFollow">Follow on Instagram →</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">inh<span>a</span>le<sup style="font-size:.6rem;vertical-align:super;color:var(--smoke);">®</sup></div>
-  <div class="footer-note">© 2025 Inhale Coils &amp; Alexa Nation · www.inhalecoils.com</div>
+  <div class="footer-logo"><img src="inhale.png" alt="inhale®" class="footer-logo-img"></div>
+  <div class="footer-note">© 2025 Inhale Coils & Alexa Nation · inhaledrip.com</div>
   <div class="footer-links">
     <a href="https://www.instagram.com/inhalecoils/" target="_blank">Instagram</a>
     <a href="https://vt.tiktok.com/ZSH37g3XG/?page=Mall" target="_blank">TikTok Shop</a>
@@ -898,37 +658,15 @@ footer{background:var(--black);border-top:1px solid var(--mist);padding:2.8rem 3
 </footer>
 
 <script>
-
-/* ── AGE GATE ── */
-function agePass(){
-  document.getElementById('ageGate').classList.add('hidden');
-  document.body.style.overflow='';
-  sessionStorage.setItem('ageVerified','1');
-}
-function ageFail(){
-  document.getElementById('ageContent').style.display='none';
-  document.getElementById('ageBlocked').style.display='block';
-}
-(function(){
-  if(!sessionStorage.getItem('ageVerified')){
-    document.body.style.overflow='hidden';
-  } else {
-    document.getElementById('ageGate').classList.add('hidden');
-  }
-})();
-
-/* ── CURSOR ── */
 const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
 if('ontouchstart' in window){cur.style.display='none';ring.style.display='none';document.body.style.cursor='auto';}
 
-/* ── NAV SCROLL ── */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
 
-/* ── SERIES TABS ── */
 function switchSeries(id,btn){
   document.querySelectorAll('.series-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
@@ -936,7 +674,6 @@ function switchSeries(id,btn){
   btn.classList.add('active');
 }
 
-/* ── POPUP ── */
 function openPopup(){document.getElementById('overlay').classList.add('open');document.body.style.overflow='hidden';}
 function closePopup(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';}
 function closeOnBg(e){if(e.target===document.getElementById('overlay'))closePopup();}
@@ -952,169 +689,108 @@ function submitForm(){
   if(!n||!s||!em||!w){alert(lang==='en'?'Please fill all required fields.':'Mohon lengkapi semua field wajib.');return;}
   const typeMap={ws:'Wholesaler',agent:'Agent',dist:'Distributor',collab:'Brand Collaboration',retail:'Retail / Vape Shop'};
   const prodMap={coils:'Inhale Coils',liquid:'Inhaledrip E-Liquid',both:'Coils & E-Liquid'};
-  const text = [
-    '🔥 *INHALE COILS — Reseller Application*',
-    '',
-    '👤 *Name:* ' + n,
-    '🏪 *Store/Brand:* ' + s,
-    '📧 *Email:* ' + em,
-    '📱 *WhatsApp:* ' + w,
-    '📍 *City/Country:* ' + (city||'-'),
-    '🤝 *Partnership:* ' + (typeMap[type]||type||'-'),
-    '📦 *Products:* ' + (prodMap[prod]||prod||'-'),
-    '💬 *Message:* ' + (msg||'-'),
-  ].join('\n');
-  const waURL = 'https://wa.me/6282285878450?text=' + encodeURIComponent(text);
-  window.open(waURL, '_blank');
+  const text=['🔥 *INHALE — Reseller Application*','','👤 *Name:* '+n,'🏪 *Store:* '+s,'📧 *Email:* '+em,'📱 *WA:* '+w,'📍 *City:* '+(city||'-'),'🤝 *Type:* '+(typeMap[type]||'-'),'📦 *Products:* '+(prodMap[prod]||'-'),'💬 *Notes:* '+(msg||'-')].join('\n');
+  window.open('https://wa.me/6282285878450?text='+encodeURIComponent(text),'_blank');
   document.getElementById('popupForm').style.display='none';
   document.getElementById('successMsg').style.display='block';
   setTimeout(()=>{closePopup();document.getElementById('popupForm').style.display='block';document.getElementById('successMsg').style.display='none';document.querySelectorAll('#popup input,#popup select,#popup textarea').forEach(el=>el.value='');},4000);
 }
 
-/* ── LANGUAGE ── */
+/* AGE GATE */
+function agePass(){document.getElementById('ageGate').classList.add('hidden');document.body.style.overflow='';sessionStorage.setItem('age','1');}
+function ageFail(){document.getElementById('ageForm').style.display='none';document.getElementById('ageBlocked').style.display='block';}
+(function(){if(!sessionStorage.getItem('age')){document.body.style.overflow='hidden';}else{document.getElementById('ageGate').classList.add('hidden');}})();
+
+/* LANGUAGE */
 let lang='en';
 const T={
   en:{
+    ageMicro:'Premium Coils & E-Liquid',ageEyebrow:'Age Verification',ageTitle:'Are you 21 or older?',ageQuote:'"Crafted for adults who appreciate precision and flavor."',
+    ageSub:'This website contains vaping products intended for adults only. Please confirm your age before entering.',
+    ageYes:'Yes, I am 21 or older',ageNo:'No, I am under 21',
+    ageNote:'By entering you confirm you are of legal age to purchase vaping products in your country.',
+    blockedTitle:'Access Restricted',blockedMsg:'Sorry, this website is not available for those under the legal age.',
     floatBtn:'Become a Reseller',
-    popupLabel:'Partnership & Reseller',popupTitle:'JOIN INHALE NETWORK',
-    popupSub:"Fill in your details and we'll reach out within 1×24 hours.",
-    fName:'Full Name *',fStore:'Store / Brand Name *',fEmail:'Email *',fWA:'WhatsApp Number *',
-    fCity:'City / Country *',fType:'Partnership Type *',fTypePH:'Select type...',
+    popupLabel:'Partnership & Reseller',popupTitle:'JOIN INHALE NETWORK',popupSub:"Fill in your details and we'll reach out within 1×24 hours.",
+    fName:'Full Name *',fStore:'Store / Brand Name *',fEmail:'Email *',fWA:'WhatsApp *',fCity:'City / Country *',fType:'Partnership Type *',fTypePH:'Select type...',
     optWS:'Wholesaler',optAgent:'Agent',optDist:'Distributor',optCollab:'Brand Collaboration',optRetail:'Retail / Vape Shop',
-    fProducts:'Interested Products',fProdPH:'Select product line...',optBoth:'Both Coils & E-Liquid',
-    fMsg:'Message / Notes',btnSend:'Send Application →',btnCancel:'Cancel',
-    formNote:'By submitting, you agree to be contacted by the Inhale Coils team via WhatsApp or email.',
-    successTitle:'Application Received!',successMsg:'Thank you! Our team will contact you within 1×24 hours via WhatsApp or email.',
-    navProducts:'Products',navLiquid:'E-Liquid',navOrder:'Order',navLocation:'Location',
-    navInstagram:'Instagram',navReviews:'Reviews',navInstagram:'Instagram',navReseller:'Reseller',navShop:'TikTok Shop',
-    heroEyebrow:'Premium Handcrafted · Baked Series',
-    heroSub:'Premium handcrafted coils and artisan e-liquid from Indonesia — engineered for precision, crafted for flavor.',
-    heroCatalog:'Explore Products',heroReseller:'Become Reseller',
+    fProducts:'Interested Products',optBoth:'Both Coils & E-Liquid',fMsg:'Message / Notes',
+    btnSend:'Send Application →',btnCancel:'Cancel',formNote:'By submitting, you agree to be contacted by the Inhale team via WhatsApp or email.',
+    successTitle:'Application Received!',successSub:'Thank you! Our team will contact you within 1×24 hours.',
+    navProducts:'Products',navLiquid:'E-Liquid',navReviews:'Reviews',navOrder:'Order',navLocation:'Location',navReseller:'Reseller',navShop:'TikTok Shop',
+    heroEyebrow:'Premium Handcrafted · Baked Series',heroSub:'Premium handcrafted coils and artisan e-liquid from Indonesia — engineered for precision, crafted for flavor.',heroCatalog:'Explore Products',heroReseller:'Become Reseller',
     stat1:'Coil Series',stat2:'SKU Products',stat3:'USA Wire',stat4:'Distribution',
     whyLabel:'Why Choose Us',whyTitle:'THE INHALE DIFFERENCE',
     w1h:'Handcrafted Precision',w1p:'Every coil is hand-built for consistent resistance and optimal performance on every session.',
-    w2h:'TMN80 USA Wire',w2p:'We use full TMN80 USA wire — faster ramp-up, cleaner flavor, longer lifespan. Trusted by top builders globally.',
-    w3h:'From Coils to Drip',w3p:'Beyond coils, our Inhaledrip Baked Series brings artisan flavor profiles — crafted from plants, delivered in every puff.',
+    w2h:'TMN80 USA Wire',w2p:'Full TMN80 USA wire — faster ramp-up, cleaner flavor, longer lifespan. Trusted by top builders globally.',
+    w3h:'From Coils to Drip',w3p:'Inhaledrip Baked Series brings artisan flavor profiles — crafted from plants, delivered in every puff.',
     coilLabel:'Inhale Coils — Product 2025',coilTitle:'COIL LINEUP',coilSub:'All coils made with full TMN80 USA wire. Choose your series.',
-    nachosDesc:'High-performance alien builds for the serious cloud & flavor chaser.',nachosTag:'Dual & Single Coil · TMN80',
-    alienSpec:'Handwound precision build · TMN80 USA',
+    nachosDesc:'High-performance alien builds for the serious cloud & flavor chaser.',
     kingDesc:'"A Taste of the King" — playing card collection for mid-ohm precision builds.',
-    babyDesc:'Slim-packaged baby alien coils — single & dual options for 2.5mm and 3.0mm ID builds.',
-    babyTag:'Single & Dual · TMN80',
-    eliqLabel:'inhaledrip — Baked Series',eliqTitle:'E-LIQUID COLLECTION',
-    eliqSub:'"From Plants to WOW" — artisan e-liquid crafted from natural flavor profiles.',
-    eliqBadge1:'Creamy · Nutty · Buttery',pistTag1:'Creamy Nutty',pistTag2:'Smooth Buttery',
-    pistDesc:'Rich pistachio cream spread over warm toasted bread — a savory-sweet baked experience in every inhale.',
-    eliqBadge2:'Fruity · Sweet · Cake',banaTag1:'From Plants to WOW',banaTag2:'Fruity Sweet',
-    banaDesc:'Fresh banana meets mixed berry cake — a tropical-fruity bake that hits smooth on every exhale.',
-    orderLabel:'How to Order',orderTitle:'GET YOUR INHALE',
-    oc1sub:'Official Mall — Safe, easy, COD available',oc3title:'Claim Product — Alexa',
-    oc4title:'Coil Catalog 2025',oc4sub:'View full product list & pricing',
-    orderInfoTitle:'Simple Order Process',
-    orderInfoP:'Inhale is available on TikTok Shop for seamless online transactions, with WhatsApp lines ready for personal consultation and custom orders.',
-    cl1:'Browse the catalog and pick your coil type and specs',
-    cl2:'Order via TikTok Shop for automated processing or WhatsApp for custom builds',
-    cl3:'Every product comes with warranty — claim directly to CS Alexa',
-    cl4:'Nationwide shipping across Indonesia, securely packed',
-    cl5:'International orders available — contact us for wholesale enquiries',
-    mapLabel:'Our Location',mapTitle:'FIND US',
-    mapDesc:'Visit our store or contact us for wholesale pickup and local orders.',
-    mapBtn:'Open in Google Maps →',
+    babyDesc:'Slim baby alien coils — single & dual for 2.5mm and 3.0mm ID builds.',babyTag:'Single & Dual · TMN80',
+    retail:'Retail Price',
+    eliqLabel:'inhaledrip — Baked Series',eliqTitle:'E-LIQUID COLLECTION',eliqSub:'"From Plants to WOW" — artisan e-liquid crafted from natural flavor profiles.',
+    pistTag1:'Creamy Nutty',pistTag2:'Smooth Buttery',pistDesc:'Rich pistachio cream spread over warm toasted bread — a savory-sweet baked experience in every inhale.',
+    banaTag1:'From Plants to WOW',banaTag2:'Fruity Sweet',banaDesc:'Fresh banana meets mixed berry cake — a tropical-fruity bake that hits smooth on every exhale.',
+    revLabel:'What They Say',revTitle:'REAL REVIEWS',
+    featText:'Alien 0,16 V1 is seriously underrated — super fast ramp up, clean flavor, consistent build quality every pack. Tried many local coils, this is the most worth it. My daily driver now.',
+    featSrc:'TikTok Review · NACHOS Alien V1 · Jakarta',
+    r1:'"Bread Butter Pistachio flavor is incredibly rich. Creamy, nutty, zero weird aftertaste. First liquid I finished in 3 days."',
+    r2:'"King Series packaging is super aesthetic, like premium playing cards. Precise coil, long-lasting, flavor stays consistent."',
+    r3:'"Banana Berry Cake is dangerously addictive. From Plants to WOW is real — the smell alone before vaping is insane."',
+    orderLabel:'How to Order',orderTitle:'GET YOUR INHALE',oc1sub:'Official Mall — Safe, easy, COD available',oc3title:'Claim Product — Alexa',oc4title:'Coil Catalog 2025',oc4sub:'View full product list & pricing',
+    orderInfoTitle:'Simple Order Process',orderInfoP:'Available on TikTok Shop for seamless transactions, with WhatsApp for personal consultation and custom orders.',
+    cl1:'Browse the catalog and pick your coil type and specs',cl2:'Order via TikTok Shop or WhatsApp for custom builds',cl3:'Every product comes with warranty — claim to CS Alexa',cl4:'Nationwide shipping across Indonesia, securely packed',cl5:'International orders available — contact us for enquiries',
+    mapLabel:'Our Location',mapTitle:'FIND US',mapDesc:'Visit our store or contact us for wholesale pickup and local orders.',mapBtn:'Open in Google Maps →',
+    igLabel:'@inhalecoils',igTitle:'FOLLOW FOR UPDATES',igTagline:'Premium Coils & E-Liquid · Alexa Nation · inhaledrip.com',igFollow:'Follow on Instagram →',
     footerReseller:'Reseller'
   },
   id:{
+    ageMicro:'Coil Premium & E-Liquid',ageEyebrow:'Verifikasi Umur',ageTitle:'Apakah kamu berusia 21+?',ageQuote:'"Dibuat untuk dewasa yang menghargai presisi dan rasa."',
+    ageSub:'Website ini mengandung produk vaping untuk dewasa. Konfirmasi usia kamu sebelum masuk.',
+    ageYes:'Ya, saya 21 tahun atau lebih',ageNo:'Tidak, saya di bawah 21',
+    ageNote:'Dengan masuk, kamu mengonfirmasi bahwa kamu telah cukup umur sesuai hukum negaramu.',
+    blockedTitle:'Akses Dibatasi',blockedMsg:'Maaf, website ini tidak tersedia untuk yang belum memenuhi usia legal.',
     floatBtn:'Daftar Reseller',
-    popupLabel:'Kemitraan & Reseller',popupTitle:'GABUNG JARINGAN INHALE',
-    popupSub:'Isi data kamu dan kami akan menghubungi dalam 1×24 jam.',
-    fName:'Nama Lengkap *',fStore:'Nama Toko / Brand *',fEmail:'Email *',fWA:'Nomor WhatsApp *',
-    fCity:'Kota / Negara *',fType:'Jenis Kemitraan *',fTypePH:'Pilih jenis...',
+    popupLabel:'Kemitraan & Reseller',popupTitle:'GABUNG JARINGAN INHALE',popupSub:'Isi data kamu dan kami akan menghubungi dalam 1×24 jam.',
+    fName:'Nama Lengkap *',fStore:'Nama Toko / Brand *',fEmail:'Email *',fWA:'Nomor WhatsApp *',fCity:'Kota / Negara *',fType:'Jenis Kemitraan *',fTypePH:'Pilih jenis...',
     optWS:'Wholesaler',optAgent:'Agent',optDist:'Distributor',optCollab:'Kolaborasi Brand',optRetail:'Toko Retail / Vape Shop',
-    fProducts:'Produk yang Diminati',fProdPH:'Pilih lini produk...',optBoth:'Coil & E-Liquid Keduanya',
-    fMsg:'Pesan / Catatan',btnSend:'Kirim Permohonan →',btnCancel:'Batal',
-    formNote:'Dengan mengirim, kamu setuju dihubungi tim Inhale Coils via WhatsApp atau email.',
-    successTitle:'Permohonan Diterima!',successMsg:'Terima kasih! Tim kami akan menghubungi kamu dalam 1×24 jam via WhatsApp atau email.',
-    navProducts:'Produk',navLiquid:'E-Liquid',navOrder:'Order',navLocation:'Lokasi',
-    navReseller:'Reseller',navShop:'TikTok Shop',
-    heroEyebrow:'Handcrafted Premium · Baked Series',
-    heroSub:'Coil premium buatan tangan dan e-liquid artisan dari Indonesia — dirancang untuk presisi, dibuat untuk cita rasa terbaik.',
-    heroCatalog:'Lihat Produk',heroReseller:'Daftar Reseller',
+    fProducts:'Produk yang Diminati',optBoth:'Coil & E-Liquid Keduanya',fMsg:'Pesan / Catatan',
+    btnSend:'Kirim Permohonan →',btnCancel:'Batal',formNote:'Dengan mengirim, kamu setuju dihubungi tim Inhale via WhatsApp atau email.',
+    successTitle:'Permohonan Diterima!',successSub:'Terima kasih! Tim kami akan menghubungi kamu dalam 1×24 jam.',
+    navProducts:'Produk',navLiquid:'E-Liquid',navReviews:'Review',navOrder:'Order',navLocation:'Lokasi',navReseller:'Reseller',navShop:'TikTok Shop',
+    heroEyebrow:'Handcrafted Premium · Baked Series',heroSub:'Coil premium buatan tangan dan e-liquid artisan dari Indonesia — dirancang untuk presisi, dibuat untuk cita rasa terbaik.',heroCatalog:'Lihat Produk',heroReseller:'Daftar Reseller',
     stat1:'Seri Coil',stat2:'SKU Produk',stat3:'Wire USA',stat4:'Distribusi',
     whyLabel:'Keunggulan Kami',whyTitle:'PERBEDAAN INHALE',
     w1h:'Presisi Handcrafted',w1p:'Setiap coil dibuat dengan tangan untuk konsistensi resistansi dan performa optimal di setiap session.',
-    w2h:'Wire TMN80 USA',w2p:'Menggunakan wire full TMN80 USA — ramp-up lebih cepat, rasa lebih bersih, umur lebih panjang.',
-    w3h:'Dari Coil ke Drip',w3p:'Selain coil, Inhaledrip Baked Series menghadirkan profil rasa artisan — dari tanaman, ke setiap hisapan.',
+    w2h:'Wire TMN80 USA',w2p:'Wire full TMN80 USA — ramp-up lebih cepat, rasa lebih bersih, umur lebih panjang.',
+    w3h:'Dari Coil ke Drip',w3p:'Inhaledrip Baked Series menghadirkan profil rasa artisan — dari tanaman, ke setiap hisapan.',
     coilLabel:'Inhale Coils — Produk 2025',coilTitle:'LINEUP COIL',coilSub:'Semua coil menggunakan wire TMN80 USA. Pilih seri favoritmu.',
-    nachosDesc:'Build alien performa tinggi untuk pemburu cloud dan flavor serius.',nachosTag:'Dual & Single Coil · TMN80',
-    alienSpec:'Build presisi handwound · TMN80 USA',
+    nachosDesc:'Build alien performa tinggi untuk pemburu cloud dan flavor serius.',
     kingDesc:'"A Taste of the King" — koleksi kartu remi untuk build presisi mid-ohm.',
-    babyDesc:'Coil baby alien kemasan slim — pilihan single & dual untuk ID 2.5mm dan 3.0mm.',
-    babyTag:'Single & Dual · TMN80',
-    eliqLabel:'inhaledrip — Baked Series',eliqTitle:'KOLEKSI E-LIQUID',
-    eliqSub:'"From Plants to WOW" — e-liquid artisan dari profil rasa alami.',
-    eliqBadge1:'Creamy · Nutty · Buttery',pistTag1:'Creamy Nutty',pistTag2:'Smooth Buttery',
-    pistDesc:'Krim pistachio kaya di atas roti panggang hangat — pengalaman baked yang gurih-manis di setiap hisapan.',
-    eliqBadge2:'Fruity · Sweet · Cake',banaTag1:'From Plants to WOW',banaTag2:'Fruity Sweet',
-    banaDesc:'Pisang segar bertemu berry cake — baked tropis-fruity yang smooth di setiap hembusan.',
-    orderLabel:'Cara Beli',orderTitle:'DAPATKAN INHALE-MU',
-    oc1sub:'Official Mall — Aman, mudah, COD tersedia',oc3title:'Klaim Produk — Alexa',
-    oc4title:'Catalog Coil 2025',oc4sub:'Lihat semua produk & harga',
-    orderInfoTitle:'Proses Order yang Mudah',
-    orderInfoP:'Inhale tersedia di TikTok Shop untuk transaksi online, dengan layanan WhatsApp untuk konsultasi dan order custom.',
-    cl1:'Cek catalog dan pilih jenis coil sesuai setup kamu',
-    cl2:'Order via TikTok Shop untuk proses otomatis, atau WA untuk build custom',
-    cl3:'Setiap produk dilengkapi garansi — klaim langsung ke CS Alexa',
-    cl4:'Pengiriman ke seluruh Indonesia, packing aman dan rapi',
-    cl5:'Order internasional tersedia — hubungi kami untuk enquiry grosir',
-    mapLabel:'Lokasi Kami',mapTitle:'TEMUKAN KAMI',
-    mapDesc:'Kunjungi toko kami atau hubungi untuk pickup grosir dan order lokal.',
-    mapBtn:'Buka di Google Maps →',
-    revLabel:'What They Say',revTitle:'REAL REVIEWS',
-    featText:'Alien 0,16 V1 is seriously underrated — super fast ramp up, clean flavor, and build quality is consistent every pack. Tried many local coils, this is the most worth it. My daily driver now.',
-    featSrc:'TikTok Review · NACHOS Alien V1 · Jakarta',
-    r1:'"Bread Butter Pistachio flavor is incredibly rich. Creamy, nutty, zero weird aftertaste. First liquid I finished in 3 days."',
-    r2:'"King Series packaging is super aesthetic, like buying premium playing cards. Coil is precise, long-lasting, flavor stays consistent."',
-    r3:'"Banana Berry Cake is dangerously addictive. From Plants to WOW is real — the smell alone before vaping is insane."',
-    vidTitle:'Video Reviews',
-    vt1:'Inhaledrip Bread Butter Pistachio',vt2:'NACHOS Alien V1 — Cloud Test',vt3:'KING Series — Joker Unboxing',vt4:'Inhaledrip Banana Berry Cake',
+    babyDesc:'Coil baby alien kemasan slim — single & dual untuk ID 2.5mm dan 3.0mm.',babyTag:'Single & Dual · TMN80',
+    retail:'Harga Retail',
+    eliqLabel:'inhaledrip — Baked Series',eliqTitle:'KOLEKSI E-LIQUID',eliqSub:'"From Plants to WOW" — e-liquid artisan dari profil rasa alami.',
+    pistTag1:'Creamy Nutty',pistTag2:'Smooth Buttery',pistDesc:'Krim pistachio kaya di atas roti panggang hangat — pengalaman baked yang gurih-manis di setiap hisapan.',
+    banaTag1:'From Plants to WOW',banaTag2:'Fruity Sweet',banaDesc:'Pisang segar bertemu berry cake — baked tropis-fruity yang smooth di setiap hembusan.',
     revLabel:'Kata Mereka',revTitle:'REVIEW NYATA',
     featText:'Alien 0,16 V1 ini seriously underrated — ramp up super cepat, flavor clean abis, dan build quality-nya konsisten tiap pack. Udah coba banyak coil lokal, ini yang paling worth it. Daily driver gue sekarang.',
     featSrc:'TikTok Review · NACHOS Alien V1 · Jakarta',
-    r1:'"Bread Butter Pistachio beneran kaya banget rasanya. Creamy, nutty, ga ada rasa aneh sama sekali. Ini liquid pertama gue yang abis dalam 3 hari."',
-    r2:'"King Series packaging-nya aesthetic banget, kayak beli kartu remi premium. Coil-nya presisi, tahan lama, flavor gak turun-turun."',
+    r1:'"Bread Butter Pistachio beneran kaya banget rasanya. Creamy, nutty, ga ada rasa aneh. Ini liquid pertama gue yang abis dalam 3 hari."',
+    r2:'"King Series packaging-nya aesthetic banget. Coil-nya presisi, tahan lama, flavor gak turun-turun."',
     r3:'"Banana Berry Cake adiktif parah. From Plants to WOW itu beneran, bau-nya aja udah bikin ngiler sebelum di-vape."',
-    vidTitle:'Video Review',
-    vt1:'Inhaledrip Bread Butter Pistachio',vt2:'NACHOS Alien V1 — Cloud Test',vt3:'KING Series — Joker Unboxing',vt4:'Inhaledrip Banana Berry Cake',
-    igLabel:'@inhalecoils',igTitle:'FOLLOW FOR UPDATES',igTagline:'Premium Coils & E-Liquid · Alexa Nation · inhalecoils.com',igFollow:'Follow on Instagram →',
-    ageMicro:'Premium Coils & E-Liquid',ageTitle:'AGE VERIFICATION',
-    ageSub:'This website contains products intended for adults only. Please confirm your age to continue.',
-    ageYes:'I am 21 or older',ageNo:'Under 21',
-    ageNote:'By entering, you confirm you are of legal age in your country to purchase vaping products.',
-    blockedTitle:'Access Restricted',blockedMsg:'Sorry, this website is not available for those under the legal age. Please close this page.',
-    revLabel:'Kata Mereka',revTitle:'REVIEW NYATA',
-    featText:'Alien 0,16 V1 ini seriously underrated — ramp up super cepat, flavor clean abis, dan build quality-nya konsisten tiap pack. Udah coba banyak coil lokal, ini yang paling worth it. Daily driver gue sekarang.',
-    featSrc:'TikTok Review · NACHOS Alien V1 · Jakarta',
-    r1:'"Bread Butter Pistachio beneran kaya banget rasanya. Creamy, nutty, ga ada rasa aneh sama sekali. Ini liquid pertama gue yang abis dalam 3 hari."',
-    r2:'"King Series packaging-nya aesthetic banget, kayak beli kartu remi premium. Coil-nya presisi, tahan lama, flavor gak turun-turun."',
-    r3:'"Banana Berry Cake adiktif parah. From Plants to WOW itu beneran, bau-nya aja udah bikin ngiler sebelum di-vape."',
-    vidTitle:'Video Review',
-    vt1:'Inhaledrip Bread Butter Pistachio',vt2:'NACHOS Alien V1 — Cloud Test',vt3:'KING Series — Joker Unboxing',vt4:'Inhaledrip Banana Berry Cake',
-    igLabel:'@inhalecoils',igTitle:'IKUTI UNTUK UPDATE',igTagline:'Coil Premium & E-Liquid · Alexa Nation · inhalecoils.com',igFollow:'Follow di Instagram →',
-    ageMicro:'Coil Premium & E-Liquid',ageTitle:'VERIFIKASI UMUR',
-    ageSub:'Website ini mengandung produk yang hanya ditujukan untuk dewasa. Konfirmasi usia kamu untuk melanjutkan.',
-    ageYes:'Saya 21 tahun atau lebih',ageNo:'Di bawah 21',
-    ageNote:'Dengan masuk, kamu mengonfirmasi bahwa kamu telah cukup umur sesuai hukum negara kamu untuk membeli produk vaping.',
-    blockedTitle:'Akses Dibatasi',blockedMsg:'Maaf, website ini tidak tersedia untuk mereka yang belum memenuhi usia legal. Silakan tutup halaman ini.',
+    orderLabel:'Cara Beli',orderTitle:'DAPATKAN INHALE-MU',oc1sub:'Official Mall — Aman, mudah, COD tersedia',oc3title:'Klaim Produk — Alexa',oc4title:'Catalog Coil 2025',oc4sub:'Lihat semua produk & harga',
+    orderInfoTitle:'Proses Order Mudah',orderInfoP:'Tersedia di TikTok Shop untuk transaksi online, dengan WhatsApp untuk konsultasi dan order custom.',
+    cl1:'Cek catalog dan pilih jenis coil sesuai setup kamu',cl2:'Order via TikTok Shop atau WA untuk build custom',cl3:'Setiap produk dilengkapi garansi — klaim ke CS Alexa',cl4:'Pengiriman ke seluruh Indonesia, packing aman',cl5:'Order internasional tersedia — hubungi kami untuk enquiry',
+    mapLabel:'Lokasi Kami',mapTitle:'TEMUKAN KAMI',mapDesc:'Kunjungi toko kami atau hubungi untuk pickup grosir dan order lokal.',mapBtn:'Buka di Google Maps →',
+    igLabel:'@inhalecoils',igTitle:'IKUTI UNTUK UPDATE',igTagline:'Coil Premium & E-Liquid · Alexa Nation · inhaledrip.com',igFollow:'Follow di Instagram →',
     footerReseller:'Reseller'
   }
 };
-
 function setLang(l){
   lang=l;
-  document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.toggle('active',b.textContent.toLowerCase()===l);});
-  document.querySelectorAll('[data-t]').forEach(el=>{
-    const k=el.getAttribute('data-t');
-    if(T[l][k]!==undefined) el.textContent=T[l][k];
-  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));
+  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(T[l][k]!==undefined)el.textContent=T[l][k];});
   document.documentElement.lang=l;
 }
 setLang('en');
